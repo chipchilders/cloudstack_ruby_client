@@ -9,6 +9,6 @@ class SampleTest < Test::Unit::TestCase
 
   def test_english_hello
     client = CloudstackRubyClient::Client.new(URL, APIKEY, SECKEY, false)
-    puts client.hi
+    puts client.listNetworkOfferings()
   end
 end

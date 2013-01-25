@@ -1,6 +1,4 @@
-require 'base_client'
-
-class CloudstackRubyClient::Client < BaseClient
+class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
     def createNetworkOffering(args={})
         # Creates a network offering.
         # 
@@ -27,16 +25,21 @@ class CloudstackRubyClient::Client < BaseClient
         #     tags - the tags for the network offering.
 
         args.merge!('command' => 'createNetworkOffering')
-        if not 'displaytext' in args:
-            raise RuntimeError("Missing required argument 'displaytext'")
-        if not 'guestiptype' in args:
-            raise RuntimeError("Missing required argument 'guestiptype'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'supportedservices' in args:
-            raise RuntimeError("Missing required argument 'supportedservices'")
-        if not 'traffictype' in args:
-            raise RuntimeError("Missing required argument 'traffictype'")
+        if not args.haskey?('displaytext')
+            raise ArgumentError, "Missing required argument 'displaytext'"
+        end
+        if not args.haskey?('guestiptype')
+            raise ArgumentError, "Missing required argument 'guestiptype'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('supportedservices')
+            raise ArgumentError, "Missing required argument 'supportedservices'"
+        end
+        if not args.haskey?('traffictype')
+            raise ArgumentError, "Missing required argument 'traffictype'"
+        end
 
         return request(args)
     end
@@ -68,8 +71,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the network offering
 
         args.merge!('command' => 'deleteNetworkOffering')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -145,14 +149,18 @@ class CloudstackRubyClient::Client < BaseClient
         #     vpcid - the VPC network belongs to
 
         args.merge!('command' => 'createNetwork')
-        if not 'displaytext' in args:
-            raise RuntimeError("Missing required argument 'displaytext'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'networkofferingid' in args:
-            raise RuntimeError("Missing required argument 'networkofferingid'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('displaytext')
+            raise ArgumentError, "Missing required argument 'displaytext'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('networkofferingid')
+            raise ArgumentError, "Missing required argument 'networkofferingid'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -165,8 +173,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the network
 
         args.merge!('command' => 'deleteNetwork')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -222,8 +231,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     cleanup - If cleanup old network elements
 
         args.merge!('command' => 'restartNetwork')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -241,8 +251,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     networkofferingid - network offering ID
 
         args.merge!('command' => 'updateNetwork')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -265,10 +276,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     vlan - the VLAN for the physical network
 
         args.merge!('command' => 'createPhysicalNetwork')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -281,8 +294,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the Physical network
 
         args.merge!('command' => 'deletePhysicalNetwork')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -317,8 +331,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     vlan - the VLAN for the physical network
 
         args.merge!('command' => 'updatePhysicalNetwork')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -353,10 +368,12 @@ class CloudstackRubyClient::Client < BaseClient
         #       ervice provider
 
         args.merge!('command' => 'addNetworkServiceProvider')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'physicalnetworkid' in args:
-            raise RuntimeError("Missing required argument 'physicalnetworkid'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('physicalnetworkid')
+            raise ArgumentError, "Missing required argument 'physicalnetworkid'"
+        end
 
         return request(args)
     end
@@ -369,8 +386,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the network service provider
 
         args.merge!('command' => 'deleteNetworkServiceProvider')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -404,8 +422,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     state - Enabled/Disabled/Shutdown the physical network service provider
 
         args.merge!('command' => 'updateNetworkServiceProvider')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -426,14 +445,18 @@ class CloudstackRubyClient::Client < BaseClient
         #       fic type table
 
         args.merge!('command' => 'createStorageNetworkIpRange')
-        if not 'gateway' in args:
-            raise RuntimeError("Missing required argument 'gateway'")
-        if not 'netmask' in args:
-            raise RuntimeError("Missing required argument 'netmask'")
-        if not 'podid' in args:
-            raise RuntimeError("Missing required argument 'podid'")
-        if not 'startip' in args:
-            raise RuntimeError("Missing required argument 'startip'")
+        if not args.haskey?('gateway')
+            raise ArgumentError, "Missing required argument 'gateway'"
+        end
+        if not args.haskey?('netmask')
+            raise ArgumentError, "Missing required argument 'netmask'"
+        end
+        if not args.haskey?('podid')
+            raise ArgumentError, "Missing required argument 'podid'"
+        end
+        if not args.haskey?('startip')
+            raise ArgumentError, "Missing required argument 'startip'"
+        end
 
         return request(args)
     end
@@ -446,8 +469,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the uuid of the storage network ip range
 
         args.merge!('command' => 'deleteStorageNetworkIpRange')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -486,8 +510,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     vlan - Optional. the vlan the ip range sits on
 
         args.merge!('command' => 'updateStorageNetworkIpRange')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -535,8 +560,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - Id of network device to delete
 
         args.merge!('command' => 'deleteNetworkDevice')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -557,10 +583,12 @@ class CloudstackRubyClient::Client < BaseClient
         #       ed to Ingress if not specified
 
         args.merge!('command' => 'createNetworkACL')
-        if not 'networkid' in args:
-            raise RuntimeError("Missing required argument 'networkid'")
-        if not 'protocol' in args:
-            raise RuntimeError("Missing required argument 'protocol'")
+        if not args.haskey?('networkid')
+            raise ArgumentError, "Missing required argument 'networkid'"
+        end
+        if not args.haskey?('protocol')
+            raise ArgumentError, "Missing required argument 'protocol'"
+        end
 
         return request(args)
     end
@@ -573,8 +601,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the network ACL
 
         args.merge!('command' => 'deleteNetworkACL')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -619,8 +648,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listNiciraNvpDeviceNetworks')
-        if not 'nvpdeviceid' in args:
-            raise RuntimeError("Missing required argument 'nvpdeviceid'")
+        if not args.haskey?('nvpdeviceid')
+            raise ArgumentError, "Missing required argument 'nvpdeviceid'"
+        end
 
         return request(args)
     end
@@ -645,16 +675,21 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - create VPC for the project
 
         args.merge!('command' => 'createVPC')
-        if not 'cidr' in args:
-            raise RuntimeError("Missing required argument 'cidr'")
-        if not 'displaytext' in args:
-            raise RuntimeError("Missing required argument 'displaytext'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'vpcofferingid' in args:
-            raise RuntimeError("Missing required argument 'vpcofferingid'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('cidr')
+            raise ArgumentError, "Missing required argument 'cidr'"
+        end
+        if not args.haskey?('displaytext')
+            raise ArgumentError, "Missing required argument 'displaytext'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('vpcofferingid')
+            raise ArgumentError, "Missing required argument 'vpcofferingid'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -707,8 +742,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the VPC
 
         args.merge!('command' => 'deleteVPC')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -749,12 +785,15 @@ class CloudstackRubyClient::Client < BaseClient
         #     supportedservices - services supported by the vpc offering
 
         args.merge!('command' => 'createVPCOffering')
-        if not 'displaytext' in args:
-            raise RuntimeError("Missing required argument 'displaytext'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'supportedservices' in args:
-            raise RuntimeError("Missing required argument 'supportedservices'")
+        if not args.haskey?('displaytext')
+            raise ArgumentError, "Missing required argument 'displaytext'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('supportedservices')
+            raise ArgumentError, "Missing required argument 'supportedservices'"
+        end
 
         return request(args)
     end
@@ -783,8 +822,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the VPC offering
 
         args.merge!('command' => 'deleteVPCOffering')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -824,16 +864,21 @@ class CloudstackRubyClient::Client < BaseClient
         #     physicalnetworkid - the Physical Network ID the network belongs to
 
         args.merge!('command' => 'createPrivateGateway')
-        if not 'gateway' in args:
-            raise RuntimeError("Missing required argument 'gateway'")
-        if not 'ipaddress' in args:
-            raise RuntimeError("Missing required argument 'ipaddress'")
-        if not 'netmask' in args:
-            raise RuntimeError("Missing required argument 'netmask'")
-        if not 'vlan' in args:
-            raise RuntimeError("Missing required argument 'vlan'")
-        if not 'vpcid' in args:
-            raise RuntimeError("Missing required argument 'vpcid'")
+        if not args.haskey?('gateway')
+            raise ArgumentError, "Missing required argument 'gateway'"
+        end
+        if not args.haskey?('ipaddress')
+            raise ArgumentError, "Missing required argument 'ipaddress'"
+        end
+        if not args.haskey?('netmask')
+            raise ArgumentError, "Missing required argument 'netmask'"
+        end
+        if not args.haskey?('vlan')
+            raise ArgumentError, "Missing required argument 'vlan'"
+        end
+        if not args.haskey?('vpcid')
+            raise ArgumentError, "Missing required argument 'vpcid'"
+        end
 
         return request(args)
     end
@@ -875,8 +920,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the private gateway
 
         args.merge!('command' => 'deletePrivateGateway')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -890,10 +936,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     gatewayid - the gateway id we are creating static route for
 
         args.merge!('command' => 'createStaticRoute')
-        if not 'cidr' in args:
-            raise RuntimeError("Missing required argument 'cidr'")
-        if not 'gatewayid' in args:
-            raise RuntimeError("Missing required argument 'gatewayid'")
+        if not args.haskey?('cidr')
+            raise ArgumentError, "Missing required argument 'cidr'"
+        end
+        if not args.haskey?('gatewayid')
+            raise ArgumentError, "Missing required argument 'gatewayid'"
+        end
 
         return request(args)
     end
@@ -906,8 +954,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the static route
 
         args.merge!('command' => 'deleteStaticRoute')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -993,12 +1042,15 @@ class CloudstackRubyClient::Client < BaseClient
         #       querystring), you can send up to 2KB of data after base64 encoding.
 
         args.merge!('command' => 'deployVirtualMachine')
-        if not 'serviceofferingid' in args:
-            raise RuntimeError("Missing required argument 'serviceofferingid'")
-        if not 'templateid' in args:
-            raise RuntimeError("Missing required argument 'templateid'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('serviceofferingid')
+            raise ArgumentError, "Missing required argument 'serviceofferingid'"
+        end
+        if not args.haskey?('templateid')
+            raise ArgumentError, "Missing required argument 'templateid'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -1012,8 +1064,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the virtual machine
 
         args.merge!('command' => 'destroyVirtualMachine')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1026,8 +1079,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the virtual machine
 
         args.merge!('command' => 'rebootVirtualMachine')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1042,8 +1096,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       oot admin only
 
         args.merge!('command' => 'startVirtualMachine')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1058,8 +1113,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       to be send to the backend).  The caller knows the VM is stopped.
 
         args.merge!('command' => 'stopVirtualMachine')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1074,8 +1130,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the virtual machine
 
         args.merge!('command' => 'resetPasswordForVirtualMachine')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1090,10 +1147,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     serviceofferingid - the service offering ID to apply to the virtual machine
 
         args.merge!('command' => 'changeServiceForVirtualMachine')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'serviceofferingid' in args:
-            raise RuntimeError("Missing required argument 'serviceofferingid'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('serviceofferingid')
+            raise ArgumentError, "Missing required argument 'serviceofferingid'"
+        end
 
         return request(args)
     end
@@ -1118,8 +1177,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       querystring), you can send up to 2KB of data after base64 encoding.
 
         args.merge!('command' => 'updateVirtualMachine')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1132,8 +1192,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the virtual machine
 
         args.merge!('command' => 'recoverVirtualMachine')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1189,8 +1250,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the virtual machine
 
         args.merge!('command' => 'getVMPassword')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1208,8 +1270,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       or migrating the root disk volume
 
         args.merge!('command' => 'migrateVirtualMachine')
-        if not 'virtualmachineid' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineid'")
+        if not args.haskey?('virtualmachineid')
+            raise ArgumentError, "Missing required argument 'virtualmachineid'"
+        end
 
         return request(args)
     end
@@ -1229,12 +1292,15 @@ class CloudstackRubyClient::Client < BaseClient
         #       one with Basic Network support.
 
         args.merge!('command' => 'assignVirtualMachine')
-        if not 'account' in args:
-            raise RuntimeError("Missing required argument 'account'")
-        if not 'domainid' in args:
-            raise RuntimeError("Missing required argument 'domainid'")
-        if not 'virtualmachineid' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineid'")
+        if not args.haskey?('account')
+            raise ArgumentError, "Missing required argument 'account'"
+        end
+        if not args.haskey?('domainid')
+            raise ArgumentError, "Missing required argument 'domainid'"
+        end
+        if not args.haskey?('virtualmachineid')
+            raise ArgumentError, "Missing required argument 'virtualmachineid'"
+        end
 
         return request(args)
     end
@@ -1247,8 +1313,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     virtualmachineid - Virtual Machine ID
 
         args.merge!('command' => 'restoreVirtualMachine')
-        if not 'virtualmachineid' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineid'")
+        if not args.haskey?('virtualmachineid')
+            raise ArgumentError, "Missing required argument 'virtualmachineid'"
+        end
 
         return request(args)
     end
@@ -1269,8 +1336,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       true by default
 
         args.merge!('command' => 'createRemoteAccessVpn')
-        if not 'publicipid' in args:
-            raise RuntimeError("Missing required argument 'publicipid'")
+        if not args.haskey?('publicipid')
+            raise ArgumentError, "Missing required argument 'publicipid'"
+        end
 
         return request(args)
     end
@@ -1283,8 +1351,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     publicipid - public ip address id of the vpn server
 
         args.merge!('command' => 'deleteRemoteAccessVpn')
-        if not 'publicipid' in args:
-            raise RuntimeError("Missing required argument 'publicipid'")
+        if not args.haskey?('publicipid')
+            raise ArgumentError, "Missing required argument 'publicipid'"
+        end
 
         return request(args)
     end
@@ -1310,8 +1379,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listRemoteAccessVpns')
-        if not 'publicipid' in args:
-            raise RuntimeError("Missing required argument 'publicipid'")
+        if not args.haskey?('publicipid')
+            raise ArgumentError, "Missing required argument 'publicipid'"
+        end
 
         return request(args)
     end
@@ -1339,16 +1409,21 @@ class CloudstackRubyClient::Client < BaseClient
         #     name - name of this customer gateway
 
         args.merge!('command' => 'createVpnCustomerGateway')
-        if not 'cidrlist' in args:
-            raise RuntimeError("Missing required argument 'cidrlist'")
-        if not 'esppolicy' in args:
-            raise RuntimeError("Missing required argument 'esppolicy'")
-        if not 'gateway' in args:
-            raise RuntimeError("Missing required argument 'gateway'")
-        if not 'ikepolicy' in args:
-            raise RuntimeError("Missing required argument 'ikepolicy'")
-        if not 'ipsecpsk' in args:
-            raise RuntimeError("Missing required argument 'ipsecpsk'")
+        if not args.haskey?('cidrlist')
+            raise ArgumentError, "Missing required argument 'cidrlist'"
+        end
+        if not args.haskey?('esppolicy')
+            raise ArgumentError, "Missing required argument 'esppolicy'"
+        end
+        if not args.haskey?('gateway')
+            raise ArgumentError, "Missing required argument 'gateway'"
+        end
+        if not args.haskey?('ikepolicy')
+            raise ArgumentError, "Missing required argument 'ikepolicy'"
+        end
+        if not args.haskey?('ipsecpsk')
+            raise ArgumentError, "Missing required argument 'ipsecpsk'"
+        end
 
         return request(args)
     end
@@ -1361,8 +1436,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     vpcid - public ip address id of the vpn gateway
 
         args.merge!('command' => 'createVpnGateway')
-        if not 'vpcid' in args:
-            raise RuntimeError("Missing required argument 'vpcid'")
+        if not args.haskey?('vpcid')
+            raise ArgumentError, "Missing required argument 'vpcid'"
+        end
 
         return request(args)
     end
@@ -1376,10 +1452,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     s2svpngatewayid - id of the vpn gateway
 
         args.merge!('command' => 'createVpnConnection')
-        if not 's2scustomergatewayid' in args:
-            raise RuntimeError("Missing required argument 's2scustomergatewayid'")
-        if not 's2svpngatewayid' in args:
-            raise RuntimeError("Missing required argument 's2svpngatewayid'")
+        if not args.haskey?('s2scustomergatewayid')
+            raise ArgumentError, "Missing required argument 's2scustomergatewayid'"
+        end
+        if not args.haskey?('s2svpngatewayid')
+            raise ArgumentError, "Missing required argument 's2svpngatewayid'"
+        end
 
         return request(args)
     end
@@ -1392,8 +1470,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - id of customer gateway
 
         args.merge!('command' => 'deleteVpnCustomerGateway')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1406,8 +1485,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - id of customer gateway
 
         args.merge!('command' => 'deleteVpnGateway')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1420,8 +1500,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - id of vpn connection
 
         args.merge!('command' => 'deleteVpnConnection')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1450,18 +1531,24 @@ class CloudstackRubyClient::Client < BaseClient
         #     name - name of this customer gateway
 
         args.merge!('command' => 'updateVpnCustomerGateway')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'cidrlist' in args:
-            raise RuntimeError("Missing required argument 'cidrlist'")
-        if not 'esppolicy' in args:
-            raise RuntimeError("Missing required argument 'esppolicy'")
-        if not 'gateway' in args:
-            raise RuntimeError("Missing required argument 'gateway'")
-        if not 'ikepolicy' in args:
-            raise RuntimeError("Missing required argument 'ikepolicy'")
-        if not 'ipsecpsk' in args:
-            raise RuntimeError("Missing required argument 'ipsecpsk'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('cidrlist')
+            raise ArgumentError, "Missing required argument 'cidrlist'"
+        end
+        if not args.haskey?('esppolicy')
+            raise ArgumentError, "Missing required argument 'esppolicy'"
+        end
+        if not args.haskey?('gateway')
+            raise ArgumentError, "Missing required argument 'gateway'"
+        end
+        if not args.haskey?('ikepolicy')
+            raise ArgumentError, "Missing required argument 'ikepolicy'"
+        end
+        if not args.haskey?('ipsecpsk')
+            raise ArgumentError, "Missing required argument 'ipsecpsk'"
+        end
 
         return request(args)
     end
@@ -1477,8 +1564,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       used, domainId must also be used.
 
         args.merge!('command' => 'resetVpnConnection')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1576,10 +1664,12 @@ class CloudstackRubyClient::Client < BaseClient
         #        this traffic on a XenServer host
 
         args.merge!('command' => 'addTrafficType')
-        if not 'physicalnetworkid' in args:
-            raise RuntimeError("Missing required argument 'physicalnetworkid'")
-        if not 'traffictype' in args:
-            raise RuntimeError("Missing required argument 'traffictype'")
+        if not args.haskey?('physicalnetworkid')
+            raise ArgumentError, "Missing required argument 'physicalnetworkid'"
+        end
+        if not args.haskey?('traffictype')
+            raise ArgumentError, "Missing required argument 'traffictype'"
+        end
 
         return request(args)
     end
@@ -1592,8 +1682,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - traffic type id
 
         args.merge!('command' => 'deleteTrafficType')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1610,8 +1701,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listTrafficTypes')
-        if not 'physicalnetworkid' in args:
-            raise RuntimeError("Missing required argument 'physicalnetworkid'")
+        if not args.haskey?('physicalnetworkid')
+            raise ArgumentError, "Missing required argument 'physicalnetworkid'"
+        end
 
         return request(args)
     end
@@ -1630,8 +1722,9 @@ class CloudstackRubyClient::Client < BaseClient
         #        this traffic on a XenServer host
 
         args.merge!('command' => 'updateTrafficType')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1667,10 +1760,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     domainid - List events for the specified domain.
 
         args.merge!('command' => 'generateUsageRecords')
-        if not 'enddate' in args:
-            raise RuntimeError("Missing required argument 'enddate'")
-        if not 'startdate' in args:
-            raise RuntimeError("Missing required argument 'startdate'")
+        if not args.haskey?('enddate')
+            raise ArgumentError, "Missing required argument 'enddate'"
+        end
+        if not args.haskey?('startdate')
+            raise ArgumentError, "Missing required argument 'startdate'"
+        end
 
         return request(args)
     end
@@ -1695,10 +1790,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listUsageRecords')
-        if not 'enddate' in args:
-            raise RuntimeError("Missing required argument 'enddate'")
-        if not 'startdate' in args:
-            raise RuntimeError("Missing required argument 'startdate'")
+        if not args.haskey?('enddate')
+            raise ArgumentError, "Missing required argument 'enddate'"
+        end
+        if not args.haskey?('startdate')
+            raise ArgumentError, "Missing required argument 'startdate'"
+        end
 
         return request(args)
     end
@@ -1724,10 +1821,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     zoneid - Zone in which to add the external firewall appliance.
 
         args.merge!('command' => 'addTrafficMonitor')
-        if not 'url' in args:
-            raise RuntimeError("Missing required argument 'url'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('url')
+            raise ArgumentError, "Missing required argument 'url'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -1740,8 +1839,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - Id of the Traffic Monitor Host.
 
         args.merge!('command' => 'deleteTrafficMonitor')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1758,8 +1858,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listTrafficMonitors')
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -1784,18 +1885,24 @@ class CloudstackRubyClient::Client < BaseClient
         #       e timezone parameter, see Time Zone Format.
 
         args.merge!('command' => 'createUser')
-        if not 'account' in args:
-            raise RuntimeError("Missing required argument 'account'")
-        if not 'email' in args:
-            raise RuntimeError("Missing required argument 'email'")
-        if not 'firstname' in args:
-            raise RuntimeError("Missing required argument 'firstname'")
-        if not 'lastname' in args:
-            raise RuntimeError("Missing required argument 'lastname'")
-        if not 'password' in args:
-            raise RuntimeError("Missing required argument 'password'")
-        if not 'username' in args:
-            raise RuntimeError("Missing required argument 'username'")
+        if not args.haskey?('account')
+            raise ArgumentError, "Missing required argument 'account'"
+        end
+        if not args.haskey?('email')
+            raise ArgumentError, "Missing required argument 'email'"
+        end
+        if not args.haskey?('firstname')
+            raise ArgumentError, "Missing required argument 'firstname'"
+        end
+        if not args.haskey?('lastname')
+            raise ArgumentError, "Missing required argument 'lastname'"
+        end
+        if not args.haskey?('password')
+            raise ArgumentError, "Missing required argument 'password'"
+        end
+        if not args.haskey?('username')
+            raise ArgumentError, "Missing required argument 'username'"
+        end
 
         return request(args)
     end
@@ -1808,8 +1915,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - Deletes a user
 
         args.merge!('command' => 'deleteUser')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1833,8 +1941,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       ey
 
         args.merge!('command' => 'updateUser')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1875,8 +1984,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - Disables user by user ID.
 
         args.merge!('command' => 'disableUser')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1889,8 +1999,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - Enables user by user ID.
 
         args.merge!('command' => 'enableUser')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -1903,8 +2014,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     userapikey - API key of the user
 
         args.merge!('command' => 'getUser')
-        if not 'userapikey' in args:
-            raise RuntimeError("Missing required argument 'userapikey'")
+        if not args.haskey?('userapikey')
+            raise ArgumentError, "Missing required argument 'userapikey'"
+        end
 
         return request(args)
     end
@@ -1922,10 +2034,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - add vpn user to the specific project
 
         args.merge!('command' => 'addVpnUser')
-        if not 'password' in args:
-            raise RuntimeError("Missing required argument 'password'")
-        if not 'username' in args:
-            raise RuntimeError("Missing required argument 'username'")
+        if not args.haskey?('password')
+            raise ArgumentError, "Missing required argument 'password'"
+        end
+        if not args.haskey?('username')
+            raise ArgumentError, "Missing required argument 'username'"
+        end
 
         return request(args)
     end
@@ -1942,8 +2056,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - remove vpn user from the project
 
         args.merge!('command' => 'removeVpnUser')
-        if not 'username' in args:
-            raise RuntimeError("Missing required argument 'username'")
+        if not args.haskey?('username')
+            raise ArgumentError, "Missing required argument 'username'"
+        end
 
         return request(args)
     end
@@ -2002,14 +2117,18 @@ class CloudstackRubyClient::Client < BaseClient
         #        is required when LB service provider is ElasticLoadBalancerVm
 
         args.merge!('command' => 'createLoadBalancerRule')
-        if not 'algorithm' in args:
-            raise RuntimeError("Missing required argument 'algorithm'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'privateport' in args:
-            raise RuntimeError("Missing required argument 'privateport'")
-        if not 'publicport' in args:
-            raise RuntimeError("Missing required argument 'publicport'")
+        if not args.haskey?('algorithm')
+            raise ArgumentError, "Missing required argument 'algorithm'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('privateport')
+            raise ArgumentError, "Missing required argument 'privateport'"
+        end
+        if not args.haskey?('publicport')
+            raise ArgumentError, "Missing required argument 'publicport'"
+        end
 
         return request(args)
     end
@@ -2022,8 +2141,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the load balancer rule
 
         args.merge!('command' => 'deleteLoadBalancerRule')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2039,10 +2159,12 @@ class CloudstackRubyClient::Client < BaseClient
         #       emoved from the load balancer rule (i.e. virtualMachineIds=1,2,3)
 
         args.merge!('command' => 'removeFromLoadBalancerRule')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'virtualmachineids' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineids'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('virtualmachineids')
+            raise ArgumentError, "Missing required argument 'virtualmachineids'"
+        end
 
         return request(args)
     end
@@ -2057,10 +2179,12 @@ class CloudstackRubyClient::Client < BaseClient
         #       signed to the load balancer rule(i.e. virtualMachineIds=1,2,3)
 
         args.merge!('command' => 'assignToLoadBalancerRule')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'virtualmachineids' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineids'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('virtualmachineids')
+            raise ArgumentError, "Missing required argument 'virtualmachineids'"
+        end
 
         return request(args)
     end
@@ -2079,12 +2203,15 @@ class CloudstackRubyClient::Client < BaseClient
         #       e
 
         args.merge!('command' => 'createLBStickinessPolicy')
-        if not 'lbruleid' in args:
-            raise RuntimeError("Missing required argument 'lbruleid'")
-        if not 'methodname' in args:
-            raise RuntimeError("Missing required argument 'methodname'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('lbruleid')
+            raise ArgumentError, "Missing required argument 'lbruleid'"
+        end
+        if not args.haskey?('methodname')
+            raise ArgumentError, "Missing required argument 'methodname'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -2097,8 +2224,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the LB stickiness policy
 
         args.merge!('command' => 'deleteLBStickinessPolicy')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2145,8 +2273,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listLBStickinessPolicies')
-        if not 'lbruleid' in args:
-            raise RuntimeError("Missing required argument 'lbruleid'")
+        if not args.haskey?('lbruleid')
+            raise ArgumentError, "Missing required argument 'lbruleid'"
+        end
 
         return request(args)
     end
@@ -2165,8 +2294,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listLoadBalancerRuleInstances')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2182,8 +2312,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     name - the name of the load balancer rule
 
         args.merge!('command' => 'updateLoadBalancerRule')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2219,12 +2350,15 @@ class CloudstackRubyClient::Client < BaseClient
         #       her this parameter, or snapshotId has to be passed in
 
         args.merge!('command' => 'createTemplate')
-        if not 'displaytext' in args:
-            raise RuntimeError("Missing required argument 'displaytext'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'ostypeid' in args:
-            raise RuntimeError("Missing required argument 'ostypeid'")
+        if not args.haskey?('displaytext')
+            raise ArgumentError, "Missing required argument 'displaytext'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('ostypeid')
+            raise ArgumentError, "Missing required argument 'ostypeid'"
+        end
 
         return request(args)
     end
@@ -2245,8 +2379,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     sortkey - sort key of the template, integer
 
         args.merge!('command' => 'updateTemplate')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2261,12 +2396,15 @@ class CloudstackRubyClient::Client < BaseClient
         #     sourcezoneid - ID of the zone the template is currently hosted on.
 
         args.merge!('command' => 'copyTemplate')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'destzoneid' in args:
-            raise RuntimeError("Missing required argument 'destzoneid'")
-        if not 'sourcezoneid' in args:
-            raise RuntimeError("Missing required argument 'sourcezoneid'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('destzoneid')
+            raise ArgumentError, "Missing required argument 'destzoneid'"
+        end
+        if not args.haskey?('sourcezoneid')
+            raise ArgumentError, "Missing required argument 'sourcezoneid'"
+        end
 
         return request(args)
     end
@@ -2281,8 +2419,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     zoneid - the ID of zone of the template
 
         args.merge!('command' => 'deleteTemplate')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2318,8 +2457,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listTemplates')
-        if not 'templatefilter' in args:
-            raise RuntimeError("Missing required argument 'templatefilter'")
+        if not args.haskey?('templatefilter')
+            raise ArgumentError, "Missing required argument 'templatefilter'"
+        end
 
         return request(args)
     end
@@ -2345,8 +2485,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       r has to be passed in.
 
         args.merge!('command' => 'updateTemplatePermissions')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2361,8 +2502,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listTemplatePermissions')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2378,10 +2520,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     zoneid - the ID of the zone where the ISO is originally located
 
         args.merge!('command' => 'extractTemplate')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'mode' in args:
-            raise RuntimeError("Missing required argument 'mode'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('mode')
+            raise ArgumentError, "Missing required argument 'mode'"
+        end
 
         return request(args)
     end
@@ -2396,10 +2540,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     zoneid - zone ID of the template to be prepared in primary storage(s).
 
         args.merge!('command' => 'prepareTemplate')
-        if not 'templateid' in args:
-            raise RuntimeError("Missing required argument 'templateid'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('templateid')
+            raise ArgumentError, "Missing required argument 'templateid'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -2412,8 +2558,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the router
 
         args.merge!('command' => 'startRouter')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2426,8 +2573,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the router
 
         args.merge!('command' => 'rebootRouter')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2441,8 +2589,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     forced - Force stop the VM. The caller knows the VM is stopped.
 
         args.merge!('command' => 'stopRouter')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2455,8 +2604,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the router
 
         args.merge!('command' => 'destroyRouter')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2470,10 +2620,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     serviceofferingid - the service offering ID to apply to the domain router
 
         args.merge!('command' => 'changeServiceForRouter')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'serviceofferingid' in args:
-            raise RuntimeError("Missing required argument 'serviceofferingid'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('serviceofferingid')
+            raise ArgumentError, "Missing required argument 'serviceofferingid'"
+        end
 
         return request(args)
     end
@@ -2519,8 +2671,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     nspid - the network service provider ID of the virtual router element
 
         args.merge!('command' => 'createVirtualRouterElement')
-        if not 'nspid' in args:
-            raise RuntimeError("Missing required argument 'nspid'")
+        if not args.haskey?('nspid')
+            raise ArgumentError, "Missing required argument 'nspid'"
+        end
 
         return request(args)
     end
@@ -2534,10 +2687,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     enabled - Enabled/Disabled the service provider
 
         args.merge!('command' => 'configureVirtualRouterElement')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'enabled' in args:
-            raise RuntimeError("Missing required argument 'enabled'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('enabled')
+            raise ArgumentError, "Missing required argument 'enabled'"
+        end
 
         return request(args)
     end
@@ -2571,10 +2726,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     domainid - domain ID of the account owning a project
 
         args.merge!('command' => 'createProject')
-        if not 'displaytext' in args:
-            raise RuntimeError("Missing required argument 'displaytext'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('displaytext')
+            raise ArgumentError, "Missing required argument 'displaytext'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -2587,8 +2744,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - id of the project to be deleted
 
         args.merge!('command' => 'deleteProject')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2603,8 +2761,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     displaytext - display text of the project
 
         args.merge!('command' => 'updateProject')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2617,8 +2776,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - id of the project to be modified
 
         args.merge!('command' => 'activateProject')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2631,8 +2791,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - id of the project to be suspended
 
         args.merge!('command' => 'suspendProject')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2705,8 +2866,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       cified with domainId
 
         args.merge!('command' => 'updateProjectInvitation')
-        if not 'projectid' in args:
-            raise RuntimeError("Missing required argument 'projectid'")
+        if not args.haskey?('projectid')
+            raise ArgumentError, "Missing required argument 'projectid'"
+        end
 
         return request(args)
     end
@@ -2719,8 +2881,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - id of the invitation
 
         args.merge!('command' => 'deleteProjectInvitation')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2734,10 +2897,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     virtualmachineid - the ID of the virtual machine
 
         args.merge!('command' => 'attachIso')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'virtualmachineid' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineid'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('virtualmachineid')
+            raise ArgumentError, "Missing required argument 'virtualmachineid'"
+        end
 
         return request(args)
     end
@@ -2750,8 +2915,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     virtualmachineid - The ID of the virtual machine
 
         args.merge!('command' => 'detachIso')
-        if not 'virtualmachineid' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineid'")
+        if not args.haskey?('virtualmachineid')
+            raise ArgumentError, "Missing required argument 'virtualmachineid'"
+        end
 
         return request(args)
     end
@@ -2811,8 +2977,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     sortkey - sort key of the template, integer
 
         args.merge!('command' => 'updateIso')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2827,8 +2994,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       be deleted from all the zones
 
         args.merge!('command' => 'deleteIso')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2843,12 +3011,15 @@ class CloudstackRubyClient::Client < BaseClient
         #     sourcezoneid - ID of the zone the template is currently hosted on.
 
         args.merge!('command' => 'copyIso')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'destzoneid' in args:
-            raise RuntimeError("Missing required argument 'destzoneid'")
-        if not 'sourcezoneid' in args:
-            raise RuntimeError("Missing required argument 'sourcezoneid'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('destzoneid')
+            raise ArgumentError, "Missing required argument 'destzoneid'"
+        end
+        if not args.haskey?('sourcezoneid')
+            raise ArgumentError, "Missing required argument 'sourcezoneid'"
+        end
 
         return request(args)
     end
@@ -2870,8 +3041,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       r has to be passed in.
 
         args.merge!('command' => 'updateIsoPermissions')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2886,8 +3058,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listIsoPermissions')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2903,10 +3076,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     zoneid - the ID of the zone where the ISO is originally located
 
         args.merge!('command' => 'extractIso')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'mode' in args:
-            raise RuntimeError("Missing required argument 'mode'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('mode')
+            raise ArgumentError, "Missing required argument 'mode'"
+        end
 
         return request(args)
     end
@@ -2929,18 +3104,24 @@ class CloudstackRubyClient::Client < BaseClient
         #     hosttags - list of tags to be added to the host
 
         args.merge!('command' => 'addHost')
-        if not 'hypervisor' in args:
-            raise RuntimeError("Missing required argument 'hypervisor'")
-        if not 'password' in args:
-            raise RuntimeError("Missing required argument 'password'")
-        if not 'podid' in args:
-            raise RuntimeError("Missing required argument 'podid'")
-        if not 'url' in args:
-            raise RuntimeError("Missing required argument 'url'")
-        if not 'username' in args:
-            raise RuntimeError("Missing required argument 'username'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('hypervisor')
+            raise ArgumentError, "Missing required argument 'hypervisor'"
+        end
+        if not args.haskey?('password')
+            raise ArgumentError, "Missing required argument 'password'"
+        end
+        if not args.haskey?('podid')
+            raise ArgumentError, "Missing required argument 'podid'"
+        end
+        if not args.haskey?('url')
+            raise ArgumentError, "Missing required argument 'url'"
+        end
+        if not args.haskey?('username')
+            raise ArgumentError, "Missing required argument 'username'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -2953,8 +3134,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the host ID
 
         args.merge!('command' => 'reconnectHost')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2972,8 +3154,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     url - the new uri for the secondary storage: nfs://host/path
 
         args.merge!('command' => 'updateHost')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -2990,8 +3173,9 @@ class CloudstackRubyClient::Client < BaseClient
         #        created on this local storage will be destroyed
 
         args.merge!('command' => 'deleteHost')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3004,8 +3188,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the host ID
 
         args.merge!('command' => 'prepareHostForMaintenance')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3018,8 +3203,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the host ID
 
         args.merge!('command' => 'cancelHostMaintenance')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3063,8 +3249,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     zoneid - the Zone ID for the secondary storage
 
         args.merge!('command' => 'addSecondaryStorage')
-        if not 'url' in args:
-            raise RuntimeError("Missing required argument 'url'")
+        if not args.haskey?('url')
+            raise ArgumentError, "Missing required argument 'url'"
+        end
 
         return request(args)
     end
@@ -3080,10 +3267,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     hostid - the host ID
 
         args.merge!('command' => 'updateHostPassword')
-        if not 'password' in args:
-            raise RuntimeError("Missing required argument 'password'")
-        if not 'username' in args:
-            raise RuntimeError("Missing required argument 'username'")
+        if not args.haskey?('password')
+            raise ArgumentError, "Missing required argument 'password'"
+        end
+        if not args.haskey?('username')
+            raise ArgumentError, "Missing required argument 'username'"
+        end
 
         return request(args)
     end
@@ -3111,18 +3300,24 @@ class CloudstackRubyClient::Client < BaseClient
         #       e timezone parameter, see Time Zone Format.
 
         args.merge!('command' => 'createAccount')
-        if not 'accounttype' in args:
-            raise RuntimeError("Missing required argument 'accounttype'")
-        if not 'email' in args:
-            raise RuntimeError("Missing required argument 'email'")
-        if not 'firstname' in args:
-            raise RuntimeError("Missing required argument 'firstname'")
-        if not 'lastname' in args:
-            raise RuntimeError("Missing required argument 'lastname'")
-        if not 'password' in args:
-            raise RuntimeError("Missing required argument 'password'")
-        if not 'username' in args:
-            raise RuntimeError("Missing required argument 'username'")
+        if not args.haskey?('accounttype')
+            raise ArgumentError, "Missing required argument 'accounttype'"
+        end
+        if not args.haskey?('email')
+            raise ArgumentError, "Missing required argument 'email'"
+        end
+        if not args.haskey?('firstname')
+            raise ArgumentError, "Missing required argument 'firstname'"
+        end
+        if not args.haskey?('lastname')
+            raise ArgumentError, "Missing required argument 'lastname'"
+        end
+        if not args.haskey?('password')
+            raise ArgumentError, "Missing required argument 'password'"
+        end
+        if not args.haskey?('username')
+            raise ArgumentError, "Missing required argument 'username'"
+        end
 
         return request(args)
     end
@@ -3135,8 +3330,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - Account id
 
         args.merge!('command' => 'deleteAccount')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3155,8 +3351,9 @@ class CloudstackRubyClient::Client < BaseClient
         #        update domainName with NULL value
 
         args.merge!('command' => 'updateAccount')
-        if not 'newname' in args:
-            raise RuntimeError("Missing required argument 'newname'")
+        if not args.haskey?('newname')
+            raise ArgumentError, "Missing required argument 'newname'"
+        end
 
         return request(args)
     end
@@ -3172,8 +3369,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - Account id
 
         args.merge!('command' => 'disableAccount')
-        if not 'lock' in args:
-            raise RuntimeError("Missing required argument 'lock'")
+        if not args.haskey?('lock')
+            raise ArgumentError, "Missing required argument 'lock'"
+        end
 
         return request(args)
     end
@@ -3231,8 +3429,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     email - email to which invitation to the project is going to be sent
 
         args.merge!('command' => 'addAccountToProject')
-        if not 'projectid' in args:
-            raise RuntimeError("Missing required argument 'projectid'")
+        if not args.haskey?('projectid')
+            raise ArgumentError, "Missing required argument 'projectid'"
+        end
 
         return request(args)
     end
@@ -3246,10 +3445,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - id of the project to remove the account from
 
         args.merge!('command' => 'deleteAccountFromProject')
-        if not 'account' in args:
-            raise RuntimeError("Missing required argument 'account'")
-        if not 'projectid' in args:
-            raise RuntimeError("Missing required argument 'projectid'")
+        if not args.haskey?('account')
+            raise ArgumentError, "Missing required argument 'account'"
+        end
+        if not args.haskey?('projectid')
+            raise ArgumentError, "Missing required argument 'projectid'"
+        end
 
         return request(args)
     end
@@ -3268,8 +3469,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listProjectAccounts')
-        if not 'projectid' in args:
-            raise RuntimeError("Missing required argument 'projectid'")
+        if not args.haskey?('projectid')
+            raise ArgumentError, "Missing required argument 'projectid'"
+        end
 
         return request(args)
     end
@@ -3287,10 +3489,12 @@ class CloudstackRubyClient::Client < BaseClient
         #       v/xvdf* 6 - /dev/xvdg* 7 - /dev/xvdh* 8 - /dev/xvdi* 9 - /dev/xvdj
 
         args.merge!('command' => 'attachVolume')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'virtualmachineid' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineid'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('virtualmachineid')
+            raise ArgumentError, "Missing required argument 'virtualmachineid'"
+        end
 
         return request(args)
     end
@@ -3312,14 +3516,18 @@ class CloudstackRubyClient::Client < BaseClient
         #       must also be used.
 
         args.merge!('command' => 'uploadVolume')
-        if not 'format' in args:
-            raise RuntimeError("Missing required argument 'format'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'url' in args:
-            raise RuntimeError("Missing required argument 'url'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('format')
+            raise ArgumentError, "Missing required argument 'format'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('url')
+            raise ArgumentError, "Missing required argument 'url'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -3362,8 +3570,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     zoneid - the ID of the availability zone
 
         args.merge!('command' => 'createVolume')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -3376,8 +3585,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the disk volume
 
         args.merge!('command' => 'deleteVolume')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3425,12 +3635,15 @@ class CloudstackRubyClient::Client < BaseClient
         #     url - the url to which the volume would be extracted
 
         args.merge!('command' => 'extractVolume')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'mode' in args:
-            raise RuntimeError("Missing required argument 'mode'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('mode')
+            raise ArgumentError, "Missing required argument 'mode'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -3444,10 +3657,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     volumeid - the ID of the volume
 
         args.merge!('command' => 'migrateVolume')
-        if not 'storageid' in args:
-            raise RuntimeError("Missing required argument 'storageid'")
-        if not 'volumeid' in args:
-            raise RuntimeError("Missing required argument 'volumeid'")
+        if not args.haskey?('storageid')
+            raise ArgumentError, "Missing required argument 'storageid'"
+        end
+        if not args.haskey?('volumeid')
+            raise ArgumentError, "Missing required argument 'volumeid'"
+        end
 
         return request(args)
     end
@@ -3460,8 +3675,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the system virtual machine
 
         args.merge!('command' => 'startSystemVm')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3474,8 +3690,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the system virtual machine
 
         args.merge!('command' => 'rebootSystemVm')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3489,8 +3706,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     forced - Force stop the VM.  The caller knows the VM is stopped.
 
         args.merge!('command' => 'stopSystemVm')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3503,8 +3721,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the system virtual machine
 
         args.merge!('command' => 'destroySystemVm')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3542,10 +3761,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     virtualmachineid - the ID of the virtual machine
 
         args.merge!('command' => 'migrateSystemVm')
-        if not 'hostid' in args:
-            raise RuntimeError("Missing required argument 'hostid'")
-        if not 'virtualmachineid' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineid'")
+        if not args.haskey?('hostid')
+            raise ArgumentError, "Missing required argument 'hostid'"
+        end
+        if not args.haskey?('virtualmachineid')
+            raise ArgumentError, "Missing required argument 'virtualmachineid'"
+        end
 
         return request(args)
     end
@@ -3560,10 +3781,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     serviceofferingid - the service offering ID to apply to the system vm
 
         args.merge!('command' => 'changeServiceForSystemVm')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
-        if not 'serviceofferingid' in args:
-            raise RuntimeError("Missing required argument 'serviceofferingid'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
+        if not args.haskey?('serviceofferingid')
+            raise ArgumentError, "Missing required argument 'serviceofferingid'"
+        end
 
         return request(args)
     end
@@ -3582,8 +3805,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - Deploy vm for the project
 
         args.merge!('command' => 'createSecurityGroup')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -3640,8 +3864,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the ingress rule
 
         args.merge!('command' => 'revokeSecurityGroupIngress')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3681,8 +3906,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the egress rule
 
         args.merge!('command' => 'revokeSecurityGroupEgress')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3751,12 +3977,15 @@ class CloudstackRubyClient::Client < BaseClient
         #     tags - the tags for the storage pool
 
         args.merge!('command' => 'createStoragePool')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'url' in args:
-            raise RuntimeError("Missing required argument 'url'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('url')
+            raise ArgumentError, "Missing required argument 'url'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -3770,8 +3999,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     tags - comma-separated list of tags for the storage pool
 
         args.merge!('command' => 'updateStoragePool')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3786,8 +4016,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       e as a part of pool removal)
 
         args.merge!('command' => 'deleteStoragePool')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3800,8 +4031,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - Primary storage ID
 
         args.merge!('command' => 'enableStorageMaintenance')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3814,8 +4046,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the primary storage ID
 
         args.merge!('command' => 'cancelStorageMaintenance')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3834,8 +4067,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       Y.
 
         args.merge!('command' => 'createSnapshot')
-        if not 'volumeid' in args:
-            raise RuntimeError("Missing required argument 'volumeid'")
+        if not args.haskey?('volumeid')
+            raise ArgumentError, "Missing required argument 'volumeid'"
+        end
 
         return request(args)
     end
@@ -3878,8 +4112,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - The ID of the snapshot
 
         args.merge!('command' => 'deleteSnapshot')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -3898,16 +4133,21 @@ class CloudstackRubyClient::Client < BaseClient
         #     volumeid - the ID of the disk volume
 
         args.merge!('command' => 'createSnapshotPolicy')
-        if not 'intervaltype' in args:
-            raise RuntimeError("Missing required argument 'intervaltype'")
-        if not 'maxsnaps' in args:
-            raise RuntimeError("Missing required argument 'maxsnaps'")
-        if not 'schedule' in args:
-            raise RuntimeError("Missing required argument 'schedule'")
-        if not 'timezone' in args:
-            raise RuntimeError("Missing required argument 'timezone'")
-        if not 'volumeid' in args:
-            raise RuntimeError("Missing required argument 'volumeid'")
+        if not args.haskey?('intervaltype')
+            raise ArgumentError, "Missing required argument 'intervaltype'"
+        end
+        if not args.haskey?('maxsnaps')
+            raise ArgumentError, "Missing required argument 'maxsnaps'"
+        end
+        if not args.haskey?('schedule')
+            raise ArgumentError, "Missing required argument 'schedule'"
+        end
+        if not args.haskey?('timezone')
+            raise ArgumentError, "Missing required argument 'timezone'"
+        end
+        if not args.haskey?('volumeid')
+            raise ArgumentError, "Missing required argument 'volumeid'"
+        end
 
         return request(args)
     end
@@ -3937,8 +4177,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     page - Pagination
 
         args.merge!('command' => 'listSnapshotPolicies')
-        if not 'volumeid' in args:
-            raise RuntimeError("Missing required argument 'volumeid'")
+        if not args.haskey?('volumeid')
+            raise ArgumentError, "Missing required argument 'volumeid'"
+        end
 
         return request(args)
     end
@@ -3997,16 +4238,21 @@ class CloudstackRubyClient::Client < BaseClient
         #       
 
         args.merge!('command' => 'createPortForwardingRule')
-        if not 'ipaddressid' in args:
-            raise RuntimeError("Missing required argument 'ipaddressid'")
-        if not 'privateport' in args:
-            raise RuntimeError("Missing required argument 'privateport'")
-        if not 'protocol' in args:
-            raise RuntimeError("Missing required argument 'protocol'")
-        if not 'publicport' in args:
-            raise RuntimeError("Missing required argument 'publicport'")
-        if not 'virtualmachineid' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineid'")
+        if not args.haskey?('ipaddressid')
+            raise ArgumentError, "Missing required argument 'ipaddressid'"
+        end
+        if not args.haskey?('privateport')
+            raise ArgumentError, "Missing required argument 'privateport'"
+        end
+        if not args.haskey?('protocol')
+            raise ArgumentError, "Missing required argument 'protocol'"
+        end
+        if not args.haskey?('publicport')
+            raise ArgumentError, "Missing required argument 'publicport'"
+        end
+        if not args.haskey?('virtualmachineid')
+            raise ArgumentError, "Missing required argument 'virtualmachineid'"
+        end
 
         return request(args)
     end
@@ -4019,8 +4265,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the port forwarding rule
 
         args.merge!('command' => 'deletePortForwardingRule')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4041,10 +4288,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     type - type of firewallrule: system/user
 
         args.merge!('command' => 'createFirewallRule')
-        if not 'ipaddressid' in args:
-            raise RuntimeError("Missing required argument 'ipaddressid'")
-        if not 'protocol' in args:
-            raise RuntimeError("Missing required argument 'protocol'")
+        if not args.haskey?('ipaddressid')
+            raise ArgumentError, "Missing required argument 'ipaddressid'"
+        end
+        if not args.haskey?('protocol')
+            raise ArgumentError, "Missing required argument 'protocol'"
+        end
 
         return request(args)
     end
@@ -4057,8 +4306,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the firewall rule
 
         args.merge!('command' => 'deleteFirewallRule')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4100,12 +4350,15 @@ class CloudstackRubyClient::Client < BaseClient
         #     zoneid - The Zone ID with which the account is to be marked.
 
         args.merge!('command' => 'markDefaultZoneForAccount')
-        if not 'account' in args:
-            raise RuntimeError("Missing required argument 'account'")
-        if not 'domainid' in args:
-            raise RuntimeError("Missing required argument 'domainid'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('account')
+            raise ArgumentError, "Missing required argument 'account'"
+        end
+        if not args.haskey?('domainid')
+            raise ArgumentError, "Missing required argument 'domainid'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -4132,14 +4385,18 @@ class CloudstackRubyClient::Client < BaseClient
         #       rwise
 
         args.merge!('command' => 'createZone')
-        if not 'dns1' in args:
-            raise RuntimeError("Missing required argument 'dns1'")
-        if not 'internaldns1' in args:
-            raise RuntimeError("Missing required argument 'internaldns1'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'networktype' in args:
-            raise RuntimeError("Missing required argument 'networktype'")
+        if not args.haskey?('dns1')
+            raise ArgumentError, "Missing required argument 'dns1'"
+        end
+        if not args.haskey?('internaldns1')
+            raise ArgumentError, "Missing required argument 'internaldns1'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('networktype')
+            raise ArgumentError, "Missing required argument 'networktype'"
+        end
 
         return request(args)
     end
@@ -4168,8 +4425,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     name - the name of the Zone
 
         args.merge!('command' => 'updateZone')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4182,8 +4440,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the Zone
 
         args.merge!('command' => 'deleteZone')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4223,10 +4482,12 @@ class CloudstackRubyClient::Client < BaseClient
         #       )
 
         args.merge!('command' => 'enableStaticNat')
-        if not 'ipaddressid' in args:
-            raise RuntimeError("Missing required argument 'ipaddressid'")
-        if not 'virtualmachineid' in args:
-            raise RuntimeError("Missing required argument 'virtualmachineid'")
+        if not args.haskey?('ipaddressid')
+            raise ArgumentError, "Missing required argument 'ipaddressid'"
+        end
+        if not args.haskey?('virtualmachineid')
+            raise ArgumentError, "Missing required argument 'virtualmachineid'"
+        end
 
         return request(args)
     end
@@ -4247,12 +4508,15 @@ class CloudstackRubyClient::Client < BaseClient
         #       true by default
 
         args.merge!('command' => 'createIpForwardingRule')
-        if not 'ipaddressid' in args:
-            raise RuntimeError("Missing required argument 'ipaddressid'")
-        if not 'protocol' in args:
-            raise RuntimeError("Missing required argument 'protocol'")
-        if not 'startport' in args:
-            raise RuntimeError("Missing required argument 'startport'")
+        if not args.haskey?('ipaddressid')
+            raise ArgumentError, "Missing required argument 'ipaddressid'"
+        end
+        if not args.haskey?('protocol')
+            raise ArgumentError, "Missing required argument 'protocol'"
+        end
+        if not args.haskey?('startport')
+            raise ArgumentError, "Missing required argument 'startport'"
+        end
 
         return request(args)
     end
@@ -4265,8 +4529,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the id of the forwarding rule
 
         args.merge!('command' => 'deleteIpForwardingRule')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4307,8 +4572,9 @@ class CloudstackRubyClient::Client < BaseClient
         #        disableed
 
         args.merge!('command' => 'disableStaticNat')
-        if not 'ipaddressid' in args:
-            raise RuntimeError("Missing required argument 'ipaddressid'")
+        if not args.haskey?('ipaddressid')
+            raise ArgumentError, "Missing required argument 'ipaddressid'"
+        end
 
         return request(args)
     end
@@ -4324,8 +4590,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       nt.  If no parent domain is specied, the ROOT domain is assumed.
 
         args.merge!('command' => 'createDomain')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -4341,8 +4608,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       update domainName with NULL value
 
         args.merge!('command' => 'updateDomain')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4357,8 +4625,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       cleaned up, false otherwise
 
         args.merge!('command' => 'deleteDomain')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4415,8 +4684,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     value - the value of the configuration
 
         args.merge!('command' => 'updateConfiguration')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -4494,8 +4764,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - The project of the instance group
 
         args.merge!('command' => 'createInstanceGroup')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -4508,8 +4779,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the instance group
 
         args.merge!('command' => 'deleteInstanceGroup')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4523,8 +4795,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     name - new instance group name
 
         args.merge!('command' => 'updateInstanceGroup')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4580,16 +4853,21 @@ class CloudstackRubyClient::Client < BaseClient
         #     tags - the tags for this service offering.
 
         args.merge!('command' => 'createServiceOffering')
-        if not 'cpunumber' in args:
-            raise RuntimeError("Missing required argument 'cpunumber'")
-        if not 'cpuspeed' in args:
-            raise RuntimeError("Missing required argument 'cpuspeed'")
-        if not 'displaytext' in args:
-            raise RuntimeError("Missing required argument 'displaytext'")
-        if not 'memory' in args:
-            raise RuntimeError("Missing required argument 'memory'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('cpunumber')
+            raise ArgumentError, "Missing required argument 'cpunumber'"
+        end
+        if not args.haskey?('cpuspeed')
+            raise ArgumentError, "Missing required argument 'cpuspeed'"
+        end
+        if not args.haskey?('displaytext')
+            raise ArgumentError, "Missing required argument 'displaytext'"
+        end
+        if not args.haskey?('memory')
+            raise ArgumentError, "Missing required argument 'memory'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -4602,8 +4880,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the service offering
 
         args.merge!('command' => 'deleteServiceOffering')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4619,8 +4898,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     sortkey - sort key of the service offering, integer
 
         args.merge!('command' => 'updateServiceOffering')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4684,20 +4964,27 @@ class CloudstackRubyClient::Client < BaseClient
         #     templatetag - the tag for this template.
 
         args.merge!('command' => 'registerTemplate')
-        if not 'displaytext' in args:
-            raise RuntimeError("Missing required argument 'displaytext'")
-        if not 'format' in args:
-            raise RuntimeError("Missing required argument 'format'")
-        if not 'hypervisor' in args:
-            raise RuntimeError("Missing required argument 'hypervisor'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'ostypeid' in args:
-            raise RuntimeError("Missing required argument 'ostypeid'")
-        if not 'url' in args:
-            raise RuntimeError("Missing required argument 'url'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('displaytext')
+            raise ArgumentError, "Missing required argument 'displaytext'"
+        end
+        if not args.haskey?('format')
+            raise ArgumentError, "Missing required argument 'format'"
+        end
+        if not args.haskey?('hypervisor')
+            raise ArgumentError, "Missing required argument 'hypervisor'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('ostypeid')
+            raise ArgumentError, "Missing required argument 'ostypeid'"
+        end
+        if not args.haskey?('url')
+            raise ArgumentError, "Missing required argument 'url'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -4728,14 +5015,18 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - Register iso for the project
 
         args.merge!('command' => 'registerIso')
-        if not 'displaytext' in args:
-            raise RuntimeError("Missing required argument 'displaytext'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'url' in args:
-            raise RuntimeError("Missing required argument 'url'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('displaytext')
+            raise ArgumentError, "Missing required argument 'displaytext'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('url')
+            raise ArgumentError, "Missing required argument 'url'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -4753,8 +5044,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - User id
 
         args.merge!('command' => 'registerUserKeys')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4772,10 +5064,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - an optional project for the ssh key
 
         args.merge!('command' => 'registerSSHKeyPair')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'publickey' in args:
-            raise RuntimeError("Missing required argument 'publickey'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('publickey')
+            raise ArgumentError, "Missing required argument 'publickey'"
+        end
 
         return request(args)
     end
@@ -4795,16 +5089,21 @@ class CloudstackRubyClient::Client < BaseClient
         #     endip - the ending IP address for the Pod
 
         args.merge!('command' => 'createPod')
-        if not 'gateway' in args:
-            raise RuntimeError("Missing required argument 'gateway'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
-        if not 'netmask' in args:
-            raise RuntimeError("Missing required argument 'netmask'")
-        if not 'startip' in args:
-            raise RuntimeError("Missing required argument 'startip'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('gateway')
+            raise ArgumentError, "Missing required argument 'gateway'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
+        if not args.haskey?('netmask')
+            raise ArgumentError, "Missing required argument 'netmask'"
+        end
+        if not args.haskey?('startip')
+            raise ArgumentError, "Missing required argument 'startip'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -4824,8 +5123,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     startip - the starting IP address for the Pod
 
         args.merge!('command' => 'updatePod')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4838,8 +5138,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the ID of the Pod
 
         args.merge!('command' => 'deletePod')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4879,10 +5180,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     tags - tags for the disk offering
 
         args.merge!('command' => 'createDiskOffering')
-        if not 'displaytext' in args:
-            raise RuntimeError("Missing required argument 'displaytext'")
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('displaytext')
+            raise ArgumentError, "Missing required argument 'displaytext'"
+        end
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -4899,8 +5202,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     sortkey - sort key of the disk offering, integer
 
         args.merge!('command' => 'updateDiskOffering')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4913,8 +5217,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - ID of the disk offering
 
         args.merge!('command' => 'deleteDiskOffering')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -4958,16 +5263,21 @@ class CloudstackRubyClient::Client < BaseClient
         #     vsmusername - the username for the VSM associated with this cluster
 
         args.merge!('command' => 'addCluster')
-        if not 'clustername' in args:
-            raise RuntimeError("Missing required argument 'clustername'")
-        if not 'clustertype' in args:
-            raise RuntimeError("Missing required argument 'clustertype'")
-        if not 'hypervisor' in args:
-            raise RuntimeError("Missing required argument 'hypervisor'")
-        if not 'podid' in args:
-            raise RuntimeError("Missing required argument 'podid'")
-        if not 'zoneid' in args:
-            raise RuntimeError("Missing required argument 'zoneid'")
+        if not args.haskey?('clustername')
+            raise ArgumentError, "Missing required argument 'clustername'"
+        end
+        if not args.haskey?('clustertype')
+            raise ArgumentError, "Missing required argument 'clustertype'"
+        end
+        if not args.haskey?('hypervisor')
+            raise ArgumentError, "Missing required argument 'hypervisor'"
+        end
+        if not args.haskey?('podid')
+            raise ArgumentError, "Missing required argument 'podid'"
+        end
+        if not args.haskey?('zoneid')
+            raise ArgumentError, "Missing required argument 'zoneid'"
+        end
 
         return request(args)
     end
@@ -4980,8 +5290,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the cluster ID
 
         args.merge!('command' => 'deleteCluster')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -5000,8 +5311,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     managedstate - whether this cluster is managed by cloudstack
 
         args.merge!('command' => 'updateCluster')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -5054,8 +5366,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     zoneid - the Zone ID of the VLAN IP range
 
         args.merge!('command' => 'createVlanIpRange')
-        if not 'startip' in args:
-            raise RuntimeError("Missing required argument 'startip'")
+        if not args.haskey?('startip')
+            raise ArgumentError, "Missing required argument 'startip'"
+        end
 
         return request(args)
     end
@@ -5068,8 +5381,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the id of the VLAN IP range
 
         args.merge!('command' => 'deleteVlanIpRange')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -5114,8 +5428,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - an optional project for the ssh key
 
         args.merge!('command' => 'createSSHKeyPair')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -5132,8 +5447,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - the project associated with keypair
 
         args.merge!('command' => 'deleteSSHKeyPair')
-        if not 'name' in args:
-            raise RuntimeError("Missing required argument 'name'")
+        if not args.haskey?('name')
+            raise ArgumentError, "Missing required argument 'name'"
+        end
 
         return request(args)
     end
@@ -5176,12 +5492,15 @@ class CloudstackRubyClient::Client < BaseClient
         #       ag can't be used by cloudStack code internally
 
         args.merge!('command' => 'createTags')
-        if not 'resourceids' in args:
-            raise RuntimeError("Missing required argument 'resourceids'")
-        if not 'resourcetype' in args:
-            raise RuntimeError("Missing required argument 'resourcetype'")
-        if not 'tags' in args:
-            raise RuntimeError("Missing required argument 'tags'")
+        if not args.haskey?('resourceids')
+            raise ArgumentError, "Missing required argument 'resourceids'"
+        end
+        if not args.haskey?('resourcetype')
+            raise ArgumentError, "Missing required argument 'resourcetype'"
+        end
+        if not args.haskey?('tags')
+            raise ArgumentError, "Missing required argument 'tags'"
+        end
 
         return request(args)
     end
@@ -5196,10 +5515,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     tags - Delete tags matching key/value pairs
 
         args.merge!('command' => 'deleteTags')
-        if not 'resourceids' in args:
-            raise RuntimeError("Missing required argument 'resourceids'")
-        if not 'resourcetype' in args:
-            raise RuntimeError("Missing required argument 'resourcetype'")
+        if not args.haskey?('resourceids')
+            raise ArgumentError, "Missing required argument 'resourceids'"
+        end
+        if not args.haskey?('resourcetype')
+            raise ArgumentError, "Missing required argument 'resourcetype'"
+        end
 
         return request(args)
     end
@@ -5246,16 +5567,21 @@ class CloudstackRubyClient::Client < BaseClient
         #     username - Credentials to access the Nicira Controller API
 
         args.merge!('command' => 'addNiciraNvpDevice')
-        if not 'hostname' in args:
-            raise RuntimeError("Missing required argument 'hostname'")
-        if not 'password' in args:
-            raise RuntimeError("Missing required argument 'password'")
-        if not 'physicalnetworkid' in args:
-            raise RuntimeError("Missing required argument 'physicalnetworkid'")
-        if not 'transportzoneuuid' in args:
-            raise RuntimeError("Missing required argument 'transportzoneuuid'")
-        if not 'username' in args:
-            raise RuntimeError("Missing required argument 'username'")
+        if not args.haskey?('hostname')
+            raise ArgumentError, "Missing required argument 'hostname'"
+        end
+        if not args.haskey?('password')
+            raise ArgumentError, "Missing required argument 'password'"
+        end
+        if not args.haskey?('physicalnetworkid')
+            raise ArgumentError, "Missing required argument 'physicalnetworkid'"
+        end
+        if not args.haskey?('transportzoneuuid')
+            raise ArgumentError, "Missing required argument 'transportzoneuuid'"
+        end
+        if not args.haskey?('username')
+            raise ArgumentError, "Missing required argument 'username'"
+        end
 
         return request(args)
     end
@@ -5268,8 +5594,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     nvpdeviceid - Nicira device ID
 
         args.merge!('command' => 'deleteNiciraNvpDevice')
-        if not 'nvpdeviceid' in args:
-            raise RuntimeError("Missing required argument 'nvpdeviceid'")
+        if not args.haskey?('nvpdeviceid')
+            raise ArgumentError, "Missing required argument 'nvpdeviceid'"
+        end
 
         return request(args)
     end
@@ -5310,8 +5637,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     projectid - Update resource limits for project
 
         args.merge!('command' => 'updateResourceLimit')
-        if not 'resourcetype' in args:
-            raise RuntimeError("Missing required argument 'resourcetype'")
+        if not args.haskey?('resourcetype')
+            raise ArgumentError, "Missing required argument 'resourcetype'"
+        end
 
         return request(args)
     end
@@ -5335,8 +5663,9 @@ class CloudstackRubyClient::Client < BaseClient
         #       r can register/create.
 
         args.merge!('command' => 'updateResourceCount')
-        if not 'domainid' in args:
-            raise RuntimeError("Missing required argument 'domainid'")
+        if not args.haskey?('domainid')
+            raise ArgumentError, "Missing required argument 'domainid'"
+        end
 
         return request(args)
     end
@@ -5397,8 +5726,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     id - the id of the public ip address to disassociate
 
         args.merge!('command' => 'disassociateIpAddress')
-        if not 'id' in args:
-            raise RuntimeError("Missing required argument 'id'")
+        if not args.haskey?('id')
+            raise ArgumentError, "Missing required argument 'id'"
+        end
 
         return request(args)
     end
@@ -5452,8 +5782,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     username - the username for swift
 
         args.merge!('command' => 'addSwift')
-        if not 'url' in args:
-            raise RuntimeError("Missing required argument 'url'")
+        if not args.haskey?('url')
+            raise ArgumentError, "Missing required argument 'url'"
+        end
 
         return request(args)
     end
@@ -5494,12 +5825,15 @@ class CloudstackRubyClient::Client < BaseClient
         #     truststorepass - Enter the password for trust store.
 
         args.merge!('command' => 'ldapConfig')
-        if not 'hostname' in args:
-            raise RuntimeError("Missing required argument 'hostname'")
-        if not 'queryfilter' in args:
-            raise RuntimeError("Missing required argument 'queryfilter'")
-        if not 'searchbase' in args:
-            raise RuntimeError("Missing required argument 'searchbase'")
+        if not args.haskey?('hostname')
+            raise ArgumentError, "Missing required argument 'hostname'"
+        end
+        if not args.haskey?('queryfilter')
+            raise ArgumentError, "Missing required argument 'queryfilter'"
+        end
+        if not args.haskey?('searchbase')
+            raise ArgumentError, "Missing required argument 'searchbase'"
+        end
 
         return request(args)
     end
@@ -5603,8 +5937,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     jobid - the ID of the asychronous job
 
         args.merge!('command' => 'queryAsyncJobResult')
-        if not 'jobid' in args:
-            raise RuntimeError("Missing required argument 'jobid'")
+        if not args.haskey?('jobid')
+            raise ArgumentError, "Missing required argument 'jobid'"
+        end
 
         return request(args)
     end
@@ -5686,10 +6021,12 @@ class CloudstackRubyClient::Client < BaseClient
         #       ainId are passed in, "domainId" parameter takes precendence
 
         args.merge!('command' => 'login')
-        if not 'username' in args:
-            raise RuntimeError("Missing required argument 'username'")
-        if not 'password' in args:
-            raise RuntimeError("Missing required argument 'password'")
+        if not args.haskey?('username')
+            raise ArgumentError, "Missing required argument 'username'"
+        end
+        if not args.haskey?('password')
+            raise ArgumentError, "Missing required argument 'password'"
+        end
 
         return request(args)
     end
@@ -5715,8 +6052,9 @@ class CloudstackRubyClient::Client < BaseClient
         #     userid - the user ID for the cloud identifier
 
         args.merge!('command' => 'getCloudIdentifier')
-        if not 'userid' in args:
-            raise RuntimeError("Missing required argument 'userid'")
+        if not args.haskey?('userid')
+            raise ArgumentError, "Missing required argument 'userid'"
+        end
 
         return request(args)
     end
@@ -5733,10 +6071,12 @@ class CloudstackRubyClient::Client < BaseClient
         #     privatekey - the private key for the certificate
 
         args.merge!('command' => 'uploadCustomCertificate')
-        if not 'certificate' in args:
-            raise RuntimeError("Missing required argument 'certificate'")
-        if not 'domainsuffix' in args:
-            raise RuntimeError("Missing required argument 'domainsuffix'")
+        if not args.haskey?('certificate')
+            raise ArgumentError, "Missing required argument 'certificate'"
+        end
+        if not args.haskey?('domainsuffix')
+            raise ArgumentError, "Missing required argument 'domainsuffix'"
+        end
 
         return request(args)
     end
