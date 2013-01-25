@@ -35,9 +35,7 @@ class CloudstackRubyClient::BaseClient
     #http.use_ssl = @use_ssl
     #http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Get.new(uri.request_uri)
-    puts 'sending!'
     response = http.request(request)
-    puts 'got something'
     if !response.is_a?(Net::HTTPOK) then
       puts "Error #{response.code}: #{response.message}"
       puts JSON.pretty_generate(JSON.parse(response.body))
