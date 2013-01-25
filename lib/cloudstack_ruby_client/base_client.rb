@@ -5,7 +5,7 @@ require 'cgi'
 require 'net/http'
 require 'json'
 
-class BaseClient
+class CloudstackRubyClient::BaseClient
 
   def initialize(api_url, api_key, secret_key, use_ssl)
     @api_url = api_url

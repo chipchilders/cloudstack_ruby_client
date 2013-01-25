@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'cloudstack-client'
+require 'cloudstack_ruby_client'
 
 class SampleTest < Test::Unit::TestCase
 
@@ -8,7 +8,7 @@ class SampleTest < Test::Unit::TestCase
   SECKEY = 'Pse4fqYNnr1xvoRXlAe8NQKCSXeK_VGdwUxUzyLEPVQ7B3cI1Q7B8jmZ42FQpz2jIICFax1foIzg2716lJFZVw'
 
   def test_english_hello
-    client = Cloudstack::Client::CloudStackClient.new(URL, APIKEY, SECKEY, false)
+    client = CloudstackRubyClient::Client.new(URL, APIKEY, SECKEY, false)
     puts client.hi
   end
 end

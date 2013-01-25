@@ -1,4 +1,4 @@
-cloudstack-ruby-client
+cloudstack_ruby_client
 ======================
 
 A Ruby client for CloudStack's API, licensed via the Apache Software License v2.
