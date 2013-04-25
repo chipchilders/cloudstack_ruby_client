@@ -21,11 +21,10 @@ class CloudstackRubyClient::BaseClient
 
     params_arr = []
     params.sort.each { |elem|
-      params_arr << elem[0].to_s + '=' + elem[1].to_s
+      params_arr << elem[0].to_s + '=' + CGI.escape(elem[1].to_s).gsub('+', '%20').gsub(' ','%20')
     }
     data = params_arr.join('&')
-    encoded_data = URI.encode(data.downcase).gsub('+', '%20').gsub(',', '%2c')
-    signature = OpenSSL::HMAC.digest('sha1', @secret_key, encoded_data)
+    signature = OpenSSL::HMAC.digest('sha1', @secret_key, data.downcase)
     signature = Base64.encode64(signature).chomp
     signature = CGI.escape(signature)
 
