@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Cloudstack ruby client by chipchilders</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Cloudstack ruby client</h1>
+        <p>A Ruby client for CloudStack's API</p>
+
+        <p class="view"><a href="https://github.com/chipchilders/cloudstack_ruby_client">View the Project on GitHub <small>chipchilders/cloudstack_ruby_client</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/chipchilders/cloudstack_ruby_client/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/chipchilders/cloudstack_ruby_client/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/chipchilders/cloudstack_ruby_client">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="cloudstack_ruby_client" class="anchor" href="#cloudstack_ruby_client"><span class="octicon octicon-link"></span></a>cloudstack_ruby_client</h1>
+
+<p>A Ruby client for CloudStack's API, licensed via the Apache Software License v2.</p>
+
+<ul>
+<li><a href="https://github.com/chipchilders/cloudstack_ruby_client">code</a></li>
+<li><a href="https://rubygems.org/gems/cloudstack_ruby_client">gem</a></li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation:</h2>
+
+<p>Install with <code>gem install cloudstack\_ruby\_client</code></p>
+
+<p>Extra special thanks to <a href="http://qpleple.com">Quentin Pleplé</a> for the original <a href="https://github.com/qpleple/cloudstack-client-generator">cloudstack-client-generator</a> and <a href="http://geek.jasonhancock.com">Jason Hancock</a> for keeping <a href="https://github.com/jasonhancock/cloudstack-client-generator">his fork of the generator</a> updated (and for accepting my <a href="https://github.com/jasonhancock/cloudstack-client-generator/pull/1">pull request</a> to add Ruby support to it).</p>
+
+<h2>
+<a name="using-the-client" class="anchor" href="#using-the-client"><span class="octicon octicon-link"></span></a>Using the client</h2>
+
+<p>Here's a simple example of listing the network offerings provided by a CloudStack installation:</p>
+
+<pre><code>require 'cloudstack\_ruby\_client'
+
+URL = 'http://192.168.56.10:8080/client/api/'
+APIKEY = 'yy0sfd...Tq8YFw'
+SECKEY = 'Pse4fq...lJFZVw'
+
+client = CloudstackRubyClient::Client.new(URL, APIKEY, SECKEY, false)
+puts client.listNetworkOfferings()
+</code></pre>
+
+<p>See, easy!</p>
+
+<p>It's built against the Apache CloudStack 4.0.0-incubating release, but should work for most CloudStack 3.x versions (pre-Apache), as well as against future Apache releases in the 4.x line. We're using <a href="http://semver.org/">Semantic Versioning</a> for CloudStack release numbering, so you'll know when backward compatibility breaks by the major version number.</p>
+
+<p>Use the Apache CloudStack <a href="http://incubator.apache.org/cloudstack/docs/api/apidocs-4.0.0/TOC_Root_Admin.html">API docs</a> to understand each available method.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/chipchilders">chipchilders</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
