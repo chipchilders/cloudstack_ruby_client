@@ -8,11 +8,11 @@ require 'json'
 
 class CloudstackRubyClient::BaseClient
 
-  def initialize(api_url, api_key, secret_key, use_ssl)
-    @api_url = api_url
-    @api_key = api_key
+  def initialize(api_url, api_key, secret_key, use_ssl=nil)
+    @api_url    = api_url
+    @api_key    = api_key
     @secret_key = secret_key
-    @use_ssl = use_ssl
+    @use_ssl    = use_ssl
   end
 
   def request(params)
@@ -20,11 +20,14 @@ class CloudstackRubyClient::BaseClient
     params['apiKey'] = @api_key
 
     params_arr = []
-    params.sort.each { |elem|
-      params_arr << elem[0].to_s + '=' + CGI.escape(elem[1].to_s).gsub('+', '%20').gsub(' ','%20')
-    }
-    data = params_arr.join('&')
-    signature = OpenSSL::HMAC.digest('sha1', @secret_key, data.downcase)
+    params.sort.each do |elem|
+      params_arr << elem[0].to_s + '=' + CGI.escape(elem[1].to_s)\
+                                               .gsub('+', '%20').gsub(' ','%20')
+    end
+
+    data = params_arr.join '&'
+
+    signature = OpenSSL::HMAC.digest 'sha1', @secret_key, data.downcase
     signature = Base64.encode64(signature).chomp
     signature = CGI.escape(signature)
 
@@ -34,16 +37,17 @@ class CloudstackRubyClient::BaseClient
     #http.use_ssl = @use_ssl
     #http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Get.new(uri.request_uri)
-    response = http.request(request)
-    if !response.is_a?(Net::HTTPOK) then
-      puts "Error #{response.code}: #{response.message}"
-      puts JSON.pretty_generate(JSON.parse(response.body))
-      puts "URL: #{url}"
-      exit 1
-    end
 
-    json = JSON.parse(response.body)
-    json[params['command'].downcase + 'response']
+    http.request(request)
+
+    # if !response.is_a?(Net::HTTPOK)
+    #   puts "Error #{response.code}: #{response.message}"
+    #   puts JSON.pretty_generate(JSON.parse(response.body))
+    #   puts "URL: #{url}"
+    #   exit 1
+    # end
+
+    # json = JSON.parse(response.body)
+    # json[params['command'].downcase + 'response']
   end
-
 end

@@ -1,0 +1,6 @@
+cloudstack:
+  host:       '10.1.192.92'
+  port:       '8080'
+  admin_port: '8096'
+  api_key:    'Vjx7Onwakz3t711ozmVBYEn279Vx8Cvo1ZCPdSDMflBfQnMyp90K3ZsBP-a8ai6VIUViolHll9uflM4JW561LQ'
+  secret_key: 'cRph9bBFx32dg8yUjtv7srUyaC5eoM9_QimtutcO8b4l4RekQyuoNTUla7jx0D9GgjCfrEnAu_Vvck_4li7Ong'
