@@ -43,4 +43,17 @@ module Accounts
                   :reset_api_limit
 
   end
+
+  module Usage
+    cmd_processor :add_traffic_type,
+                  :delete_traffic_type,
+                  :list_traffic_types,
+                  :update_traffic_type,
+                  :list_traffic_type_implementors,
+                  :generate_usage_records,
+                  :list_usage_records,
+                  :add_traffic_monitor,
+                  :delete_traffic_monitor,
+                  :list_traffic_monitors
+  end
 end

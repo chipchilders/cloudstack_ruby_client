@@ -32,6 +32,10 @@ class Module
             command.gsub! /lb/i, 'LB'
           end;
 
+          if /.*vpc.*/i =~ command;
+            command.gsub! /vpc/i, 'VPC'
+          end;
+
       } + 
       %Q{
           params = {'command' => command};

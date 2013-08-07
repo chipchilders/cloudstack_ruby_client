@@ -16,6 +16,7 @@ class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
   include Accounts::Account
   include Accounts::User
   include Accounts::Limit
+  include Accounts::Usage
 
   ## System VM commands injection
   include VirtualMachine::VirtualMachine
@@ -41,6 +42,7 @@ class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
   include Network::Nat
   include Network::VPN
   include Network::LoadBalancer
+  include Network::VPC
 
   ## Volume command injection
   include Volume::Volume
@@ -66,6 +68,9 @@ class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
   ## Service offering command injection
   include ServiceOffering::ServiceOffering
   include ServiceOffering::DiskOffering
+
+  ## Auto scale command injection
+  include AutoScale::AutoScale
 
 
   def createNetworkOffering(args={})

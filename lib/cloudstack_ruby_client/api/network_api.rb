@@ -92,4 +92,22 @@ module Network
                   :list_load_balancer_rule_instances,
                   :update_load_balancer_rule
   end
+
+  module VPC
+    cmd_processor :create_vpc,
+                  :list_vpcs,
+                  :delete_vpc,
+                  :update_vpc,
+                  :restart_vpc,
+                  :create_vpc_offering,
+                  :update_vpc_offering,
+                  :delete_vpc_offering,
+                  :list_vpc_offerings,
+                  :create_private_gateway,
+                  :list_private_gateways,
+                  :delete_private_gateway,
+                  :create_static_route,
+                  :delete_static_route,
+                  :list_static_routes
+  end
 end
