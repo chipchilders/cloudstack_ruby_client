@@ -44,14 +44,22 @@ class Module
           response = request params;
 
           if !response.is_a?(Net::HTTPOK);
-
             if response.code == "431" &&
-               JSON.parse(response.body)[resp_title]['cserrorcode'] == 9999;
+               (JSON.parse(response.body)[resp_title]['cserrorcode'] == 9999 ||
+                JSON.parse(response.body)[resp_title]['cserrorcode'] == 4350);
 
-               raise ArgumentError, JSON.parse(response.body)[resp_title]['errortext'];
+               raise ArgumentError, JSON.parse(response.body)\
+                                                      [resp_title]['errortext'];
+
             end;
-            
-            puts 'Error' + response.code + ':'
+
+            if response.code == "432";
+              raise RuntimeError, JSON.parse(response.body)\
+                                                 ['errorresponse']['errortext'];
+
+            end;
+
+            puts 'Error ' + response.code + ':'
             puts JSON.pretty_generate(JSON.parse(response.body));
             exit 1;
           end;

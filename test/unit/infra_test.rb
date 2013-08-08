@@ -2,7 +2,7 @@ require 'test/unit'
 require 'yaml'
 require_relative '../../lib/cloudstack_ruby_client'
 
-class EmptyTest < Test::Unit::TestCase
+class InfrastructureTest < Test::Unit::TestCase
 
   def setup
     config      = YAML.load_file("test/config.yml")
@@ -21,92 +21,149 @@ class EmptyTest < Test::Unit::TestCase
     # Do nothing here!
   end
 
+  ### Region Test ###
+  def test_list_regions
+    # expect_result = JSON.parse('{ "count":1,"region":[{"id":1,"name":"Local","endpoint":"http://localhost:8080/client/"}]}')
+    # assert_equal(expect_result, @client.list_regions)
+    assert_equal(1, @client.list_regions['count'])
+    assert_equal('Local', @client.list_regions['region'][0]['name'])
+  end
 
-  ### Zone Test ####
+  def test_add_region
+    assert_raise(ArgumentError) do
+      @client.add_region
+    end
+  end
+
+  def test_update_region
+    assert_raise(ArgumentError) do
+      @client.update_region
+    end
+  end
+
+  def test_remove_region
+    assert_raise(ArgumentError) do
+      @client.remove_region
+    end
+  end
+
+  ### Zone Test ###
 
   def test_list_zones
-    @client.list_zones
+    assert_equal({},@client.list_zones)
   end
 
   def test_create_zone
-    @client.create_zone
+    assert_raise(ArgumentError) do
+      @client.create_zone
+    end
   end
 
   def test_update_zone
-    @client.update_zone
+    assert_raise(ArgumentError) do
+      @client.update_zone
+    end
   end
 
   def test_delete_zone
-    @client.delete_zone
+    assert_raise(ArgumentError) do
+      @client.delete_zone
+    end
   end
 
   def test_dedicate_zone
-    @client.dedicate_zone
+    assert_raise(ArgumentError) do
+      @client.dedicate_zone
+    end
   end
 
   ### Pod Test ###
 
   def test_list_pods
-    @client.list_pods
+    assert_equal({},@client.list_pods)
   end
 
   def test_create_pod
-    @client.create_pod
+    assert_raise(ArgumentError) do
+      @client.create_pod
+    end
   end
 
   def test_update_pod
-    @client.update_pod
+    assert_raise(ArgumentError) do
+      @client.update_pod
+    end
   end
 
   def test_delete_pod
-    @client.delete_pod
+    assert_raise(ArgumentError) do
+      @client.delete_pod
+    end
   end
 
   ### Cluster Test ###
 
   def test_list_clusters
-    @client.list_clusters
+    assert_equal({},@client.list_clusters)
   end
 
   def test_add_cluster
-    @client.add_cluster
+    assert_raise(ArgumentError) do
+      @client.add_cluster
+    end
   end
 
   def test_update_cluster
-    @client.update_cluster
+    assert_raise(ArgumentError) do
+      @client.update_cluster
+    end
   end
 
   def test_delete_cluster
-    @client.delete_cluster
+    assert_raise(ArgumentError) do
+      @client.delete_cluster
+    end
   end
 
   def test_dedicate_cluster
-    @client.dedicate_cluster
+    assert_raise(ArgumentError) do
+      @client.dedicate_cluster
+    end
   end
 
   ### Host Test ###
   
   def test_list_hosts
-    @client.list_hosts
+    assert_equal({}, @client.list_hosts)
   end
 
   def test_add_host
-    @client.add_host
+    assert_raise(ArgumentError) do
+      @client.add_host
+    end
   end
 
   def test_update_host
-    @client.udpate_host
+    assert_raise(ArgumentError) do
+      @client.update_host
+    end
   end
 
   def test_delete_host
-    @client.delete_host
+    assert_raise(ArgumentError) do
+      @client.delete_host
+    end
   end
 
   def test_reconnect_host
-    @client.reconnect_host
+    assert_raise(ArgumentError) do
+      @client.reconnect_host
+    end
   end
 
   def test_dedicate_host
-    @client.dedicate_host
+    assert_raise(ArgumentError) do
+      @client.dedicate_host
+    end
   end
 end

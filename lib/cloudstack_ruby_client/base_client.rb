@@ -39,15 +39,6 @@ class CloudstackRubyClient::BaseClient
     request = Net::HTTP::Get.new(uri.request_uri)
 
     http.request(request)
-
-    # if !response.is_a?(Net::HTTPOK)
-    #   puts "Error #{response.code}: #{response.message}"
-    #   puts JSON.pretty_generate(JSON.parse(response.body))
-    #   puts "URL: #{url}"
-    #   exit 1
-    # end
-
-    # json = JSON.parse(response.body)
-    # json[params['command'].downcase + 'response']
   end
+
 end
