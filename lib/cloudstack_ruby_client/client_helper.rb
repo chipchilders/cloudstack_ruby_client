@@ -1,4 +1,18 @@
 class Module
+
+  MALFORMED_CMDS = {
+  }
+
+  MALFORMED_RESPONSES = {
+    /(create|list)counter/i     => 'counterresponse',
+    /createcondition/i          => 'conditionresponse',
+    /createautoscalepolicy/i    => 'autoscalepolicyresponse',
+    /createautoscalevmprofile/i => 'autoscalevmprofileresponse',
+    /createautoscalevmgroup/i   => 'autoscalevmgroupresponse',
+    /enableautoscalevmgroup/i   => 'enableautoscalevmGroupresponse',
+    /disableautoscalevmgroup/i  => 'disableautoscalevmGroupresponse'
+  }
+
   def cmd_processor(*args)
     args.each do |arg|
       arga = arg.to_s.split('_')
@@ -15,27 +29,27 @@ class Module
       #
 
       %Q{
-
-          if /getvmpassword/i =~ command;
-            command = 'getVMPassword';
+          MALFORMED_RESPONSES.each do |k, v|;
+            if k =~ command; 
+              resp_title = v;
+            end;
           end;
 
           if /(list|create|delete)networkacl.*/i =~ command;
-            command.gsub! /acl/i, 'ACL'
+            command.gsub! /acl/i, 'ACL';
           end;
 
           if /.*ssh.*/i =~ command;
-            command.gsub! /ssh/i, 'SSH'
+            command.gsub! /ssh/i, 'SSH';
           end;
 
           if /(list|create|delete)lbstickinesspolic.*/i =~ command;
-            command.gsub! /lb/i, 'LB'
+            command.gsub! /lb/i, 'LB';
           end;
 
           if /.*vpc.*/i =~ command;
-            command.gsub! /vpc/i, 'VPC'
+            command.gsub! /vpc/i, 'VPC';
           end;
-
       } + 
       %Q{
           params = {'command' => command};
@@ -65,7 +79,7 @@ class Module
           end;
                                                                  
           json = JSON.parse(response.body);
-          json[params['command'].downcase + 'response']
+          json[resp_title]
         end;
       }
       
