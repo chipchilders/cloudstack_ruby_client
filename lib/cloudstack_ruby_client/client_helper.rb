@@ -3,6 +3,9 @@ class Module
   MALFORMED_CMDS = {
   }
 
+  # 
+  # The following is malformed response title in ACS, should be fixed
+  #
   MALFORMED_RESPONSES = {
     /(create|list)counter/i     => 'counterresponse',
     /createcondition/i          => 'conditionresponse',
