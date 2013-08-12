@@ -1,19 +1,23 @@
 class Module
 
   MALFORMED_CMDS = {
+    /getvmpassword/i            => 'getVMPassword'
   }
 
   # 
   # The following is malformed response title in ACS, should be fixed
   #
   MALFORMED_RESPONSES = {
-    /(create|list)counter/i     => 'counterresponse',
-    /createcondition/i          => 'conditionresponse',
-    /createautoscalepolicy/i    => 'autoscalepolicyresponse',
-    /createautoscalevmprofile/i => 'autoscalevmprofileresponse',
-    /createautoscalevmgroup/i   => 'autoscalevmgroupresponse',
-    /enableautoscalevmgroup/i   => 'enableautoscalevmGroupresponse',
-    /disableautoscalevmgroup/i  => 'disableautoscalevmGroupresponse'
+    /(create|list)counter/i         => 'counterresponse',
+    /createcondition/i              => 'conditionresponse',
+    /createautoscalepolicy/i        => 'autoscalepolicyresponse',
+    /createautoscalevmprofile/i     => 'autoscalevmprofileresponse',
+    /createautoscalevmgroup/i       => 'autoscalevmgroupresponse',
+    /enableautoscalevmgroup/i       => 'enableautoscalevmGroupresponse',
+    /disableautoscalevmgroup/i      => 'disableautoscalevmGroupresponse',
+    /assignvirtualmachine/i         => 'moveuservmresponse',
+    /resetsshkeyforvirtualmachine/i => 'resetSSHKeyforvirtualmachineresponse',
+    /restorevirtualmachine/i        => 'restorevmresponse'
   }
 
   def cmd_processor(*args)
@@ -38,11 +42,17 @@ class Module
             end;
           end;
 
+          MALFORMED_CMDS.each do |k, v|;
+            if k =~ command;
+              command = v;
+            end
+          end;
+
           if /(list|create|delete)networkacl.*/i =~ command;
             command.gsub! /acl/i, 'ACL';
           end;
 
-          if /.*ssh.*/i =~ command;
+          if /.*(ssh).*/i =~ command;
             command.gsub! /ssh/i, 'SSH';
           end;
 

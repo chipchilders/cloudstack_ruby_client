@@ -6,7 +6,7 @@ module VirtualMachine
                   :start_virtual_machine,
                   :stop_virtual_machine,
                   :reset_password_for_virtual_machine,
-                  :reset_sshkey_for_virtual_machine,
+                  :reset_ssh_key_for_virtual_machine,
                   :update_virtual_machine,
                   :list_virtual_machines,
                   :get_vm_password,
