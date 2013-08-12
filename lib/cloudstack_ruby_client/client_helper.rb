@@ -24,11 +24,15 @@ class Module
     args.each do |arg|
       arga = arg.to_s.split('_')
       meta_method = %Q{
-        def #{arga[0]+"_"+arga[1]}#{('_'+arga[2]) unless arga[2].nil?}#{('_'+arga[3]) unless arga[3].nil?}#{('_'+arga[4]) unless arga[4].nil?}#{('_'+arga[5]) unless arga[5].nil?}#{('_'+arga[6]) unless arga[6].nil?}(args={});
+        def #{arg}(args={});
 
-          command = "#{arga[0]}#{arga[1].capitalize}#{arga[2].capitalize unless arga[2].nil?}#{arga[3].capitalize unless arga[3].nil?}#{arga[4].capitalize unless arga[4].nil?}#{arga[5].capitalize unless arga[5].nil?}#{arga[6].capitalize unless arga[6].nil?}";
+          command = "#{
+            arga.each_with_index.map {|x, i|
+              i==0 ? x : x.capitalize
+            }.join('')
+          }";
 
-          resp_title = "#{arga[0]}#{arga[1]}#{arga[2] unless arga[2].nil?}#{arga[3] unless arga[3].nil?}#{arga[4] unless arga[4].nil?}#{arga[5] unless arga[5].nil?}#{arga[6] unless arga[6].nil?}response";
+          resp_title = "#{arga.join('')}response";
       } +
 
       #
