@@ -22,7 +22,10 @@ class Module
     /listnetworkdevice/i            => 'listnetworkdevice',
     /listniciranvpdevicenetworks/i  => 'listniciranvpdevicenetworks',
     /cancelstoragemaintenance/i     => 'cancelprimarystoragemaintenanceresponse',
-    /enablestoragemaintenance/i     => 'prepareprimarystorageformaintenanceresponse'
+    /enablestoragemaintenance/i     => 'prepareprimarystorageformaintenanceresponse',
+    /copyiso/i                      => 'copytemplateresponse',
+    /deleteiso/i                    => 'deleteisosresponse',
+    /listisopermissions/i           => 'listtemplatepermissionsresponse'
   }
 
   def cmd_processor(*args)
