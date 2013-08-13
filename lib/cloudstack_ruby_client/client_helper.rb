@@ -17,7 +17,12 @@ class Module
     /disableautoscalevmgroup/i      => 'disableautoscalevmGroupresponse',
     /assignvirtualmachine/i         => 'moveuservmresponse',
     /resetsshkeyforvirtualmachine/i => 'resetSSHKeyforvirtualmachineresponse',
-    /restorevirtualmachine/i        => 'restorevmresponse'
+    /restorevirtualmachine/i        => 'restorevmresponse',
+    /activateproject/i              => 'activaterojectresponse',
+    /listnetworkdevice/i            => 'listnetworkdevice',
+    /listniciranvpdevicenetworks/i  => 'listniciranvpdevicenetworks',
+    /cancelstoragemaintenance/i     => 'cancelprimarystoragemaintenanceresponse',
+    /enablestoragemaintenance/i     => 'prepareprimarystorageformaintenanceresponse'
   }
 
   def cmd_processor(*args)
@@ -75,7 +80,7 @@ class Module
           response = request params;
 
           if !response.is_a?(Net::HTTPOK);
-            if response.code == "431" &&
+            if response.code =~ /(431|530)/ &&
                (JSON.parse(response.body)[resp_title]['cserrorcode'] == 9999 ||
                 JSON.parse(response.body)[resp_title]['cserrorcode'] == 4350);
 

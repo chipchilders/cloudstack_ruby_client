@@ -72,4 +72,7 @@ class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
   ## Auto scale command injection
   include AutoScale::AutoScale
 
+  ## Firewall command injection
+  include Firewall::Firewall
+
 end

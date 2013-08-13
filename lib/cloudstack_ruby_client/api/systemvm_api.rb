@@ -14,7 +14,7 @@ module SystemVm
                   :reboot_router,
                   :stop_router,
                   :destroy_router,
-                  :change_servce_for_router,
+                  :change_service_for_router,
                   :list_routers,
                   :list_virtual_router_elements,
                   :configure_virtual_router_element,

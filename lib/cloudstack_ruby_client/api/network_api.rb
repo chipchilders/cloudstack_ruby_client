@@ -31,14 +31,14 @@ module Network
 
   module StorageIpRange
     cmd_processor :create_storage_network_ip_range,
-                  :delete_storeage_network_ip_range,
+                  :delete_storage_network_ip_range,
                   :list_storage_network_ip_range,
-                  :update_storage_network_up_range
+                  :update_storage_network_ip_range
   end
 
   module NetworkDevice
     cmd_processor :add_network_device,
-                  :list_network_devices,
+                  :list_network_device,
                   :delete_network_device
   end
 

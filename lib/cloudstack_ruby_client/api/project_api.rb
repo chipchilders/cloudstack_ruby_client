@@ -7,8 +7,8 @@ module Project
                   :suspend_project,
                   :list_projects,
                   :list_project_invitations,
-                  :update_project_invitaion,
-                  :delete_project_invitaion
+                  :update_project_invitation,
+                  :delete_project_invitation
 
   end
 end
