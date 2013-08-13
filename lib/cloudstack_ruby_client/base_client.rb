@@ -20,12 +20,12 @@ class CloudstackRubyClient::BaseClient
     params['apiKey'] = @api_key
 
     params_arr = []
-    params.sort.each do |elem|
+    params.each do |elem|
       params_arr << elem[0].to_s + '=' + CGI.escape(elem[1].to_s)\
-                                               .gsub('+', '%20').gsub(' ','%20')
+                                            .gsub('+', '%20').gsub(' ','%20')
     end
 
-    data = params_arr.join '&'
+    data = params_arr.sort.join '&'
 
     signature = OpenSSL::HMAC.digest 'sha1', @secret_key, data.downcase
     signature = Base64.encode64(signature).chomp

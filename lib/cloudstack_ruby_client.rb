@@ -1,4 +1,4 @@
-require 'cloudstack_ruby_client/version'
-require 'cloudstack_ruby_client/base_client'
-require 'cloudstack_ruby_client/client'
-require 'cloudstack_ruby_client/client_helper'
+require_relative 'cloudstack_ruby_client/version'
+require_relative 'cloudstack_ruby_client/base_client'
+require_relative 'cloudstack_ruby_client/client'
+require_relative 'cloudstack_ruby_client/client_helper'
