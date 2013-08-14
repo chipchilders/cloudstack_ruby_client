@@ -1,10 +1,10 @@
-require 'rubygems'
-require 'base64'
-require 'openssl'
-require 'uri'
-require 'cgi'
-require 'net/http'
-require 'json'
+# require 'rubygems'
+# require 'base64'
+# require 'openssl'
+# require 'uri'
+# require 'cgi'
+# require 'net/http'
+# require 'json'
 
 class CloudstackRubyClient::BaseClient
 
