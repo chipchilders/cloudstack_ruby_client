@@ -1,75 +1,75 @@
-require_relative "client_helper"
-require_relative "api/config"
-
 class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
   
   ## Infra Api commands injection
-  include Infrastructure::Region
-  include Infrastructure::Zone
-  include Infrastructure::Pod
-  include Infrastructure::Cluster
-  include Infrastructure::Host
+  include CloudstackRubyClient::Infrastructure::Region
+  include CloudstackRubyClient::Infrastructure::Zone
+  include CloudstackRubyClient::Infrastructure::Pod
+  include CloudstackRubyClient::Infrastructure::Cluster
+  include CloudstackRubyClient::Infrastructure::Host
 
 
   ## Accounts Api command injection
-  include Accounts::Domain
-  include Accounts::Account
-  include Accounts::User
-  include Accounts::Limit
-  include Accounts::Usage
+  include CloudstackRubyClient::Accounts::Domain
+  include CloudstackRubyClient::Accounts::Account
+  include CloudstackRubyClient::Accounts::User
+  include CloudstackRubyClient::Accounts::Limit
+  include CloudstackRubyClient::Accounts::Usage
 
   ## System VM commands injection
-  include VirtualMachine::VirtualMachine
-  include VirtualMachine::VMGroup
+  include CloudstackRubyClient::VirtualMachine::VirtualMachine
+  include CloudstackRubyClient::VirtualMachine::VMGroup
 
   ## Virtual Machine commands insjection
-  include SystemVm::SystemVm
-  include SystemVm::Router
+  include CloudstackRubyClient::SystemVm::SystemVm
+  include CloudstackRubyClient::SystemVm::Router
 
   ## Storage commands injection
-  include Storage::StoragePool
-  include Storage::ImageStore
+  include CloudstackRubyClient::Storage::StoragePool
+  include CloudstackRubyClient::Storage::ImageStore
 
   ## Network commands injection
-  include Network::NetworkOffering
-  include Network::Network
-  include Network::PhysicalNetwork
-  include Network::NetworkServiceProvider
-  include Network::StorageIpRange
-  include Network::NetworkDevice
-  include Network::NetworkACL
-  include Network::Vlan
-  include Network::Nat
-  include Network::VPN
-  include Network::LoadBalancer
-  include Network::VPC
+  include CloudstackRubyClient::Network::NetworkOffering
+  include CloudstackRubyClient::Network::Network
+  include CloudstackRubyClient::Network::PhysicalNetwork
+  include CloudstackRubyClient::Network::NetworkServiceProvider
+  include CloudstackRubyClient::Network::StorageIpRange
+  include CloudstackRubyClient::Network::NetworkDevice
+  include CloudstackRubyClient::Network::NetworkACL
+  include CloudstackRubyClient::Network::Vlan
+  include CloudstackRubyClient::Network::Nat
+  include CloudstackRubyClient::Network::VPN
+  include CloudstackRubyClient::Network::LoadBalancer
+  include CloudstackRubyClient::Network::VPC
 
   ## Volume command injection
-  include Volume::Volume
+  include CloudstackRubyClient::Volume::Volume
 
   ## Templdate command injection
-  include Template::Template
-  include Template::ISO
-  include Template::Registration
+  include CloudstackRubyClient::Template::Template
+  include CloudstackRubyClient::Template::ISO
+  include CloudstackRubyClient::Template::Registration
 
   ## Security group command injection
-  include SecurityGroup::SecurityGroup
+  include CloudstackRubyClient::SecurityGroup::SecurityGroup
 
   ## Project command injection
-  include Project::Project
+  include CloudstackRubyClient::Project::Project
 
   ## Snapshot command injection
-  include Snapshot::Snapshot
+  include CloudstackRubyClient::Snapshot::Snapshot
 
   ## Configuraion command injection
-  include Configuration::Configuration
-  include Configuration::Event
+  include CloudstackRubyClient::Configuration::Configuration
+  include CloudstackRubyClient::Configuration::Event
 
   ## Service offering command injection
-  include ServiceOffering::ServiceOffering
-  include ServiceOffering::DiskOffering
+  include CloudstackRubyClient::ServiceOffering::ServiceOffering
+  include CloudstackRubyClient::ServiceOffering::DiskOffering
 
   ## Auto scale command injection
-  include AutoScale::AutoScale
+  include CloudstackRubyClient::AutoScale::AutoScale
+
+  ## Firewall command injection
+  include CloudstackRubyClient::Firewall::Firewall
 
 end
