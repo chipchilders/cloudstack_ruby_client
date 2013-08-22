@@ -71,5 +71,8 @@ class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
 
   ## Firewall command injection
   include CloudstackRubyClient::Firewall::Firewall
+  
+  ## AsyncJob command injection
+  include CloudstackRubyClient::AsyncJob::AsyncJob
 
 end
