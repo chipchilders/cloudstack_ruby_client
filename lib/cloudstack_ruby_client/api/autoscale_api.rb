@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module AutoScale
+  module Api
     module AutoScale
       cmd_processor :create_counter,
                     :create_condition,

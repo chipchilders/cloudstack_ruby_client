@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module Infrastructure
+  module Api
     module Region
       cmd_processor :add_region,
                     :update_region,

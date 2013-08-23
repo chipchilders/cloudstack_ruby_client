@@ -191,6 +191,17 @@ class AccountsTest < Test::Unit::TestCase
     assert_equal({}, @client.list_vpn_users)
   end
 
+  def test_login
+    # @client.login 'username' => 'admin', 'domain' => '/', 'password' => 'password'
+    assert_raise(RuntimeError) do
+      @client.login
+    end
+  end
+
+  def test_logout
+    assert_equal({"description" => "success"}, @client.logout)
+  end
+
   ### Limit Test ###
 
   def test_update_resource_limit

@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module Firewall
+  module Api
     module Firewall
       cmd_processor :list_port_forwarding_rules,
                     :create_port_forwarding_rule,

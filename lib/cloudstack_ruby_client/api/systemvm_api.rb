@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module SystemVm
+  module Api
     module SystemVm
       cmd_processor :start_system_vm,
                     :reboot_system_vm,

@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module Accounts
+  module Api
     module Domain
       cmd_processor :list_domains,
                     :create_domain,

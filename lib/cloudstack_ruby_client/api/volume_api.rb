@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module Volume
+  module Api
     module Volume
       cmd_processor :attach_volume,
                     :upload_volume,

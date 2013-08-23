@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module Configuration
+  module Api
     module Configuration
       cmd_processor :update_configuration,
                     :list_configurations,
