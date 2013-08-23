@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module Network
+  module Api
     module NetworkOffering
       cmd_processor :create_network_offering,
                     :update_network_offering,

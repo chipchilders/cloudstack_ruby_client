@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module VirtualMachine
+  module Api
     module VirtualMachine
       cmd_processor :deploy_virtual_machine,
                     :destroy_virtual_machine,

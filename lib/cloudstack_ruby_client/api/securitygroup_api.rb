@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module SecurityGroup
+  module Api
     module SecurityGroup
       cmd_processor :create_security_group,
                     :delete_security_group,

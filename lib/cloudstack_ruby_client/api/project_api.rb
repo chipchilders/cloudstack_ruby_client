@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module Project
+  module Api
     module Project
       cmd_processor :create_project,
                     :delete_project,

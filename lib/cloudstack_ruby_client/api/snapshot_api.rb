@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module Snapshot
+  module Api
     module Snapshot
       cmd_processor :create_snapshot,
                     :list_snapshots,

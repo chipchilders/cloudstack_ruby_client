@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module ServiceOffering
+  module Api
     module ServiceOffering
       cmd_processor :create_service_offering,
                     :delete_service_offering,

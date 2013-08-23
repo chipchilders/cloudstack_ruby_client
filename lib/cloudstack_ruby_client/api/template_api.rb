@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module Template
+  module Api
     module Template
       cmd_processor :create_template,
                     :update_template,

@@ -1,5 +1,5 @@
 module CloudstackRubyClient
-  module Storage
+  module Api
     module StoragePool
       cmd_processor :list_storage_pools,
                     :create_storage_pool,
