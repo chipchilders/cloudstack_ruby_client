@@ -38,9 +38,9 @@ class Module
             arga.each_with_index.map {|x, i|
               i==0 ? x : x.capitalize
             }.join('')
-          }";
+          }"
 
-          resp_title = "#{arga.join('')}response";
+          resp_title = "#{arga.join('')}response"
       } +
 
       #
@@ -48,67 +48,58 @@ class Module
       #
 
       %Q{
-          MALFORMED_RESPONSES.each do |k, v|;
-            if k =~ command; 
-              resp_title = v;
-            end;
-          end;
-
-          MALFORMED_CMDS.each do |k, v|;
-            if k =~ command;
-              command = v;
+          MALFORMED_RESPONSES.each do |k, v|
+            if k =~ command
+              resp_title = v
             end
-          end;
+          end
 
-          if /(list|create|delete)networkacl.*/i =~ command;
-            command.gsub! /acl/i, 'ACL';
-          end;
+          MALFORMED_CMDS.each do |k, v|
+            if k =~ command
+              command = v
+            end
+          end
 
-          if /.*(ssh).*/i =~ command;
-            command.gsub! /ssh/i, 'SSH';
-          end;
+          if /(list|create|delete)networkacl.*/i =~ command
+            command.gsub!(/acl/i, 'ACL')
+          end
 
-          if /(list|create|delete)lbstickinesspolic.*/i =~ command;
-            command.gsub! /lb/i, 'LB';
-          end;
+          if /.*(ssh).*/i =~ command
+            command.gsub!(/ssh/i, 'SSH')
+          end
 
-          if /.*vpc.*/i =~ command;
-            command.gsub! /vpc/i, 'VPC';
-          end;
+          if /(list|create|delete)lbstickinesspolic.*/i =~ command
+            command.gsub!(/lb/i, 'LB')
+          end
+
+          if /.*vpc.*/i =~ command
+            command.gsub!(/vpc/i, 'VPC')
+          end
       } + 
       %Q{
-          params = {'command' => command};
-          params.merge! args unless args.empty?;
+          params = {'command' => command}
+          params.merge!(args) unless args.empty?
 
-          response = request params;
+          response = request(params)
+          json = JSON.parse(response.body)
+          
+          if !response.is_a?(Net::HTTPOK)
+            if ["431","530"].include?(response.code) and ["9999","4350"].include?(json[resp_title]['cserrorcode'])
+               raise ArgumentError, json[resp_title]['errortext']
+            end
 
-          if !response.is_a?(Net::HTTPOK);
-            if response.code =~ /(431|530)/ &&
-               (JSON.parse(response.body)[resp_title]['cserrorcode'] == 9999 ||
-                JSON.parse(response.body)[resp_title]['cserrorcode'] == 4350);
-
-               raise ArgumentError, JSON.parse(response.body)\
-                                                      [resp_title]['errortext'];
-
-            end;
-
-            if response.code == "432";
-              raise RuntimeError, JSON.parse(response.body)\
-                                                 ['errorresponse']['errortext'];
-
-            end;
+            raise RuntimeError, json['errorresponse']['errortext'] if response.code == "432"
 
             puts 'Error ' + response.code + ':'
-            puts JSON.pretty_generate(JSON.parse(response.body));
-            exit 1;
-          end;
-                                                                 
-          json = JSON.parse(response.body);
+            puts JSON.pretty_generate(json)
+            exit 1
+          end
+
           json[resp_title]
-        end;
+        end
       }
       
-      self.class_eval meta_method
+      self.class_eval(meta_method)
     end
   end
 end
