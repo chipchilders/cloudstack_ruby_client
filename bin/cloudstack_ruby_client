@@ -36,14 +36,29 @@ Readline.completion_append_character = " "
 Readline.completion_proc = comp
 Readline.completer_word_break_characters = ""
 
-while line = Readline.readline("cloudstack(#{ARGV[0]}:#{ARGV[1]}) >>", true)
-  command  = line.split(' ')[0].strip
-  argument = line.gsub(command, '').strip
+stty_save = `stty -g`.chomp
 
-  if argument
-    argument = JSON.parse("{" + line.gsub(command, '').gsub('\'', '"').gsub('=>', ':') + "}")
-    puts client.method(command).call argument
-  else
-    puts client.method(command).call
+begin
+  while line = Readline.readline("cloudstack(#{ARGV[0]}:#{ARGV[1]})>>", true)
+    begin
+      command  = line.split(' ')[0].strip
+      argument = line.gsub(command, '').strip
+  
+      if argument
+        argument = JSON.parse("{" + line.gsub(command, '').gsub('\'', '"').gsub('=>', ':') + "}")
+        puts client.method(command).call argument
+      else
+        puts client.method(command).call
+      end
+    rescue
+      puts "Sorry, command not supported"
+    end
   end
+rescue Interrupt => e
+  puts %Q{
+
+    Disconnected from the host
+  }
+  system('stty', stty_save) # Restore
+  exit
 end
