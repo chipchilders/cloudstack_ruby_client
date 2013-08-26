@@ -24,6 +24,9 @@ client = nil
 
 begin
   client = CloudstackRubyClient::Client.new(URL, APIKEY, SECRETKEY, false)
+rescue
+  puts "Error, cannot initiate the cloudStackRubyClient."
+  exit
 end
 
 puts "="*100
