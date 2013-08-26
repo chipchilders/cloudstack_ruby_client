@@ -52,6 +52,8 @@ begin
       end
     rescue ArgumentError => e
       puts "#{e.to_s}"
+    rescue RuntimeError => e
+      puts "Oops! something bad happened. Please try again"
     rescue
       puts "Sorry, command not supported"
     end
