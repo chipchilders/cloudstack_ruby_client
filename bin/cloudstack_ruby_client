@@ -50,6 +50,8 @@ begin
       else
         puts client.method(command).call
       end
+    rescue ArgumentError => e
+      puts "#{e.to_s}"
     rescue
       puts "Sorry, command not supported"
     end
