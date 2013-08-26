@@ -11,13 +11,6 @@ case ARGV.first when '-h', '--help', '--usage', '-?', 'help', nil
 when '--version'
   puts CloudstackRubyClient::Version
   exit 0
-
-# when '-v'
-#   puts "Homebrew #{HOMEBREW_VERSION}"
-#   # Shift the -v to the end of the parameter list
-#   ARGV << ARGV.shift
-#   # If no other arguments, just quit here.
-#   exit 0 if ARGV.length == 1
 end
 
 
