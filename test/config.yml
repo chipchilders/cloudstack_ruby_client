@@ -1,5 +1,6 @@
 cloudstack:
   host:       '10.1.192.92'
+  # host:       'localhost'
   port:       '8080'
   admin_port: '8096'
   api_key:    'd460dbswlC6ApcirESZJOh-JDCFxCtwtmoRd_FHC9QYwHNkeHi1BjdDrvnfQQ0vwDOC9t4yPF46o5Kfpn5eFVg'

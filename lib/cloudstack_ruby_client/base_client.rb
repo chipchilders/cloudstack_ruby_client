@@ -1,11 +1,3 @@
-# require 'rubygems'
-# require 'base64'
-# require 'openssl'
-# require 'uri'
-# require 'cgi'
-# require 'net/http'
-# require 'json'
-
 class CloudstackRubyClient::BaseClient
 
   def initialize(api_url, api_key, secret_key, use_ssl=nil)

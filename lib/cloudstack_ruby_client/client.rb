@@ -1,12 +1,19 @@
 class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
-  
+
+  @@API_LIST = []
+
   ## Api command injection
   CloudstackRubyClient::Api.constants.collect{|k| 
     CloudstackRubyClient::Api.const_get(k)
   }.select {|k| k.is_a?(Module)}.each do |sub_module|
     include sub_module
+  
+    @@API_LIST.concat sub_module.instance_methods(false)
   end
 
+  def self.API_LIST
+    @@API_LIST
+  end
 
   ## login api command
   def login(params = {})
