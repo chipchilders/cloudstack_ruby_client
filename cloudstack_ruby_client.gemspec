@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.version       = CloudstackRubyClient::VERSION
   gem.authors       = ["Chip Childers"]
   gem.email         = ["chip.childers@gmail.com"]
-  gem.description   = %q{A Ruby client for CloudStack's API, licensed via the Apache Software License v2.}
+  gem.description   = %q{A Ruby client for CloudStack's API, including a simple CLI.}
   gem.summary       = %q{A Ruby client for CloudStack's API.}
   gem.homepage      = "http://chipchilders.github.io/cloudstack_ruby_client/"
 
