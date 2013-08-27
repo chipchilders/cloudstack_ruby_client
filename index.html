@@ -56,14 +56,14 @@ APIKEY = 'yy0sfd...Tq8YFw'
 SECKEY = 'Pse4fq...lJFZVw'
 
 client = CloudstackRubyClient::Client.new(URL, APIKEY, SECKEY, false)
-puts client.listNetworkOfferings()
+puts client.list_network_offerings()
 </code></pre>
 
 <p>See, easy!</p>
 
 <p>It's built against the Apache CloudStack 4.0.0-incubating release, but should work for most CloudStack 3.x versions (pre-Apache), as well as against future Apache releases in the 4.x line. We're using <a href="http://semver.org/">Semantic Versioning</a> for CloudStack release numbering, so you'll know when backward compatibility breaks by the major version number.</p>
 
-<p>Use the Apache CloudStack <a href="http://incubator.apache.org/cloudstack/docs/api/apidocs-4.0.0/TOC_Root_Admin.html">API docs</a> to understand each available method.</p>
+<p>Use the Apache CloudStack <a href="http://cloudstack.apache.org/docs/api/apidocs-4.0.0/TOC_Root_Admin.html">API docs</a> to understand each available method.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/chipchilders">chipchilders</a></p>
