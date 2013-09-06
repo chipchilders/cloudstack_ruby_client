@@ -37,7 +37,8 @@ module CloudstackRubyClient
                     :update_host,
                     :delete_host,
                     :dedicate_host,
-                    :reconnect_host
+                    :reconnect_host,
+                    :add_secondary_storage
     end
   end
 end
