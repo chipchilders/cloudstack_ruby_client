@@ -1,3 +1,12 @@
+class CloudstackRubyClient::RequestError < RuntimeError
+  attr_reader :response, :json
+
+  def initialize(response, json)
+    @response = response
+    @json = json
+  end
+end
+
 class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
 
   @@API_LIST = []
@@ -51,10 +60,8 @@ class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
       end
       
       raise RuntimeError, json['errorresponse']['errortext'] if response.code == "432"
-      
-      puts 'Error ' + response.code + ':'
-      puts JSON.pretty_generate(json)
-      exit 1
+
+      raise CloudstackRubyClient::RequestError.new(response, json)
     end
     
     json[resp_title]
