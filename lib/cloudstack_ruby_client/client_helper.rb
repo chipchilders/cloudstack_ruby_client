@@ -90,9 +90,7 @@ class Module
 
             raise RuntimeError, json['errorresponse']['errortext'] if response.code == "432"
 
-            puts 'Error ' + response.code + ':'
-            puts JSON.pretty_generate(json)
-            exit 1
+            raise CloudstackRubyClient::RequestError.new(response, json)
           end
 
           json[resp_title]
