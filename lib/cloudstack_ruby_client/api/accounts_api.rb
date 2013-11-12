@@ -53,6 +53,7 @@ module CloudstackRubyClient
                     :list_traffic_type_implementors,
                     :generate_usage_records,
                     :list_usage_records,
+                    :list_usage_types,
                     :add_traffic_monitor,
                     :delete_traffic_monitor,
                     :list_traffic_monitors

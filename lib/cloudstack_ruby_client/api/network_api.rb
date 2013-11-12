@@ -6,7 +6,7 @@ module CloudstackRubyClient
                     :delete_network_offering,
                     :list_network_offerings
     end
-    
+
     module Network
       cmd_processor :create_network,
                     :delete_network,
@@ -14,14 +14,14 @@ module CloudstackRubyClient
                     :restart_network,
                     :update_network
     end
-  
+
     module PhysicalNetwork
       cmd_processor :create_physical_network,
                     :delete_physical_network,
                     :list_physical_networks,
                     :update_physical_network
     end
-  
+
     module NetworkServiceProvider
       cmd_processor :list_supported_network_services,
                     :add_network_service_provider,
@@ -29,33 +29,33 @@ module CloudstackRubyClient
                     :list_network_service_providers,
                     :update_network_service_provider
     end
-  
+
     module StorageIpRange
       cmd_processor :create_storage_network_ip_range,
                     :delete_storage_network_ip_range,
                     :list_storage_network_ip_range,
                     :update_storage_network_ip_range
     end
-  
+
     module NetworkDevice
       cmd_processor :add_network_device,
                     :list_network_device,
                     :delete_network_device
     end
-  
+
     module NetworkACL
       cmd_processor :create_network_acl,
                     :delete_network_acl,
                     :list_network_acls,
                     :list_nicira_nvp_device_networks
     end
-  
+
     module Vlan
       cmd_processor :create_vlan_ip_range,
                     :delete_vlan_ip_range,
                     :list_vlan_ip_ranges
     end
-  
+
     module Nat
       cmd_processor :enable_static_nat,
                     :create_ip_forwarding_rule,
@@ -63,7 +63,7 @@ module CloudstackRubyClient
                     :list_ip_forwarding_rules,
                     :disable_static_nat
     end
-  
+
     module VPN
       cmd_processor :create_remote_access_vpn,
                     :delete_remote_access_vpn,
@@ -80,7 +80,7 @@ module CloudstackRubyClient
                     :list_vpn_gateways,
                     :list_vpn_connections
     end
-  
+
     module LoadBalancer
       cmd_processor :create_load_balancer_rule,
                     :delete_load_balancer_rule,
@@ -89,11 +89,11 @@ module CloudstackRubyClient
                     :create_lb_stickiness_policy,
                     :delete_lb_stickiness_policy,
                     :list_load_balancer_rules,
-                    :list_lb_Stickiness_policies,
+                    :list_lb_stickiness_policies,
                     :list_load_balancer_rule_instances,
                     :update_load_balancer_rule
     end
-  
+
     module VPC
       cmd_processor :create_vpc,
                     :list_vpcs,

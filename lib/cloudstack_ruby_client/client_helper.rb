@@ -4,7 +4,7 @@ class Module
     /getvmpassword/i            => 'getVMPassword'
   }
 
-  # 
+  #
   # The following is malformed response title in ACS, should be fixed
   #
   MALFORMED_RESPONSES = {
@@ -21,6 +21,7 @@ class Module
     /activateproject/i              => 'activaterojectresponse',
     /listnetworkdevice/i            => 'listnetworkdevice',
     /listniciranvpdevicenetworks/i  => 'listniciranvpdevicenetworks',
+    /listniciranvpdevices/i         => 'listniciranvpdeviceresponse',
     /cancelstoragemaintenance/i     => 'cancelprimarystoragemaintenanceresponse',
     /enablestoragemaintenance/i     => 'prepareprimarystorageformaintenanceresponse',
     /copyiso/i                      => 'copytemplateresponse',
@@ -75,14 +76,14 @@ class Module
           if /.*vpc.*/i =~ command
             command.gsub!(/vpc/i, 'VPC')
           end
-      } + 
+      } +
       %Q{
           params = {'command' => command}
           params.merge!(args) unless args.empty?
 
           response = request(params)
           json = JSON.parse(response.body)
-          
+
           if !response.is_a?(Net::HTTPOK)
             if ["431","530"].include?(response.code) and ["9999","4350"].include?(json[resp_title]['cserrorcode'])
                raise ArgumentError, json[resp_title]['errortext']
@@ -96,7 +97,7 @@ class Module
           json[resp_title]
         end
       }
-      
+
       self.class_eval(meta_method)
     end
   end
