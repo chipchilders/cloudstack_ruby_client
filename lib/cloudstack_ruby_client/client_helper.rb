@@ -26,7 +26,8 @@ class Module
     /enablestoragemaintenance/i     => 'prepareprimarystorageformaintenanceresponse',
     /copyiso/i                      => 'copytemplateresponse',
     /deleteiso/i                    => 'deleteisosresponse',
-    /listisopermissions/i           => 'listtemplatepermissionsresponse'
+    /listisopermissions/i           => 'listtemplatepermissionsresponse',
+    /addiptonic/i                   => 'addiptovmnicresponse'
   }
 
   def cmd_processor(*args)
