@@ -1,7 +1,8 @@
 class Module
 
   MALFORMED_CMDS = {
-    /getvmpassword/i            => 'getVMPassword'
+    "getvmpassword"         => 'getVMPassword',
+    "updatevmaffinitygroup" => "updateVMAffinityGroup"
   }
 
   #
@@ -27,7 +28,8 @@ class Module
     /copyiso/i                      => 'copytemplateresponse',
     /deleteiso/i                    => 'deleteisosresponse',
     /listisopermissions/i           => 'listtemplatepermissionsresponse',
-    /addiptonic/i                   => 'addiptovmnicresponse'
+    /addiptonic/i                   => 'addiptovmnicresponse',
+    /updatevmaffinitygroup/i        => 'updatevirtualmachineresponse'
   }
 
   def cmd_processor(*args)
@@ -56,11 +58,9 @@ class Module
             end
           end
 
-          MALFORMED_CMDS.each do |k, v|
-            if k =~ command
-              command = v
-            end
-          end
+          if MALFORMED_CMDS.has_key?(command.downcase);
+            command = MALFORMED_CMDS[command.downcase];
+          end;
 
           if /(list|create|delete)networkacl.*/i =~ command
             command.gsub!(/acl/i, 'ACL')
@@ -79,18 +79,20 @@ class Module
           end
       } +
       %Q{
-          params = {'command' => command}
-          params.merge!(args) unless args.empty?
+          params = {'command' => command};
+          params.merge!(args) unless args.empty?;
 
-          response = request(params)
-          json = JSON.parse(response.body)
+          response = request(params);
+          json = JSON.parse(response.body);
 
           if !response.is_a?(Net::HTTPOK)
-            if ["431","530"].include?(response.code) and ["9999","4350"].include?(json[resp_title]['cserrorcode'])
-               raise ArgumentError, json[resp_title]['errortext']
-            end
+            if ["431","530"].include?(response.code) and
+               ["9999","4350"].include?(json[resp_title]['cserrorcode'].to_s);
 
-            raise RuntimeError, json['errorresponse']['errortext'] if response.code == "432"
+              raise ArgumentError, json[resp_title]['errortext'];
+            end;
+
+            raise RuntimeError, json['errorresponse']['errortext'] if response.code.to_s == "432"
 
             raise CloudstackRubyClient::RequestError.new(response, json)
           end
