@@ -1,8 +1,36 @@
 class Module
 
   MALFORMED_CMDS = {
-    "getvmpassword"         => 'getVMPassword',
-    "updatevmaffinitygroup" => "updateVMAffinityGroup"
+    "getvmpassword"              => 'getVMPassword',
+    "updatevmaffinitygroup"      => "updateVMAffinityGroup",
+    "listneworkacls"             => "listNetworkACLs",
+    "createneworkacl"            => "createNetworkACL",
+    "deleteneworkacl"            => "deleteNetworkACL",
+    "updateeneworkaclitem"       => "updateNetworkACLItem",
+    "createnetworkacllist"       => "createNetworkACLList",
+    "deleteNetworkacllist"       => "deleteNetworkACLList",
+    "replacenetworkacllist"      => "replaceNetworkACLList",
+    "listnetworkacllists"        => "listNetworkACLLists",
+    "setsshkeyforvirtualmachine" => "setSSHKeyForVirtualMachine",
+    "registersshkeypair"         => "registerSSHKeyPair",
+    "createsshkeypair"           => "createSSHKeyPair",
+    "deletesshkeypair"           => "deleteSSHKeyPair",
+    "listsshkeypairs"            => "listSSHKeyPairs",
+    "createlbstickinesspolicy"   => "createLBStickinessPolicy",
+    "deletelbstickinesspolicy"   => "deleteLBStickinessPolicy",
+    "deletelbstickinesspolicy"   => "deleteLBStickinessPolicy",
+    "listlbstickinesspolicies"   => "listLBStickinessPolicies",
+    "listlbhealthcheckpolicies"  => "listLBHealthCheckPolicies",
+    "createlbhealthcheckpolicy"  => "createLBHealthCheckPolicy",
+    "deletelbhealthcheckpolicy"  => "deleteLBHealthCheckPolicy",
+    "createvpc"                  => "createVPC",
+    "listvpcsdeletevpc"          => "listVPCsdeleteVPC",
+    "updatevpc"                  => "updateVPC",
+    "restartvpc"                 => "restartVPC",
+    "createvpcoffering"          => "createVPCOffering",
+    "updatevpcoffering"          => "updateVPCOffering",
+    "deletevpcoffering"          => "deleteVPCOffering",
+    "listvpcofferings"           => "listVPCOfferings"
   }
 
   #
@@ -38,46 +66,29 @@ class Module
       meta_method = %Q{
         def #{arg}(args={});
 
-          command = "#{
+          command = MALFORMED_CMDS.has_key?('#{arga.join('')}') ? MALFORMED_CMDS['#{arga.join('')}'] : "#{
             arga.each_with_index.map {|x, i|
               i==0 ? x : x.capitalize
             }.join('')
-          }"
+          }";
 
-          resp_title = "#{arga.join('')}response"
+          resp_title = "#{arga.join('')}response";
       } +
 
       #
-      # The following code block is dealing with malformed api commands
+      # The following code block is dealing with malformed response
       #
 
       %Q{
-          MALFORMED_RESPONSES.each do |k, v|
-            if k =~ command
-              resp_title = v
-            end
-          end
 
-          if MALFORMED_CMDS.has_key?(command.downcase);
-            command = MALFORMED_CMDS[command.downcase];
+          MALFORMED_RESPONSES.each do |k, v|;
+            if k =~ command;
+              resp_title = v;
+            end;
           end;
 
-          if /(list|create|delete)networkacl.*/i =~ command
-            command.gsub!(/acl/i, 'ACL')
-          end
-
-          if /.*(ssh).*/i =~ command
-            command.gsub!(/ssh/i, 'SSH')
-          end
-
-          if /(list|create|delete)lbstickinesspolic.*/i =~ command
-            command.gsub!(/lb/i, 'LB')
-          end
-
-          if /.*vpc.*/i =~ command
-            command.gsub!(/vpc/i, 'VPC')
-          end
       } +
+
       %Q{
           params = {'command' => command};
           params.merge!(args) unless args.empty?;
