@@ -1,3 +1,5 @@
+require 'timeout'
+
 class CloudstackRubyClient::RequestError < RuntimeError
   attr_reader :response, :json
 
@@ -34,6 +36,33 @@ class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
   def logout(params = {})
     auth_request(params, "logout")
   end
+
+  def wait_for_async_job(job, timeout=nil)
+    wait_time = 1
+    slept_time = 0
+    if job.has_key? 'jobid' then
+      job_id = job['jobid']
+    else
+      job_id = job
+    end
+
+    return Timeout::timeout(timeout) do
+      while true do
+         job_stat = self.query_async_job_result(:jobid => job_id)
+         if job_stat[:jobprocstatus] == 0 then  #pending
+           sleep wait_time
+           slept_time += wait_time
+           if slept_time >= 30 then
+             wait_time = 5
+           elsif slept_time >= 10 then
+             wait_time = 2
+           end
+         else
+           return job_stat
+         end
+      end
+    end
+  end
   
   protected
   
@@ -66,4 +95,5 @@ class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
     
     json[resp_title]
   end
+
 end
