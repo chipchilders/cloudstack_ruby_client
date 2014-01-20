@@ -20,8 +20,8 @@ class CloudstackRubyClient::BaseClient
     url = "#{@api_url}?#{data}&signature=#{signature}"
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
-    # http.use_ssl = @use_ssl
-    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    http.use_ssl = @use_ssl
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Get.new(uri.request_uri)
 
     http.request(request)
