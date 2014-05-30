@@ -33,7 +33,9 @@ module CloudstackRubyClient
                     :get_user,
                     :add_vpn_user,
                     :remove_vpn_user,
-                    :list_vpn_users
+                    :list_vpn_users,
+                    :list_ldap_users,
+                    :import_ldap_users
     end
   
     module Limit

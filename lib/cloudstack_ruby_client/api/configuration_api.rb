@@ -12,5 +12,11 @@ module CloudstackRubyClient
       cmd_processor :list_events,
                     :list_event_types
     end
+
+    module Ldap
+      cmd_processor :list_ldap_configurations,
+                    :add_ldap_configuration,
+                    :delete_ldap_configuration
+    end                    
   end
 end
