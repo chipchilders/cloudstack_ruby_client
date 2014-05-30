@@ -111,5 +111,23 @@ module CloudstackRubyClient
                     :delete_static_route,
                     :list_static_routes
     end
+
+    module InternalLb
+      cmd_processor :configure_internal_load_balancer_element,
+                    :create_internal_load_balancer_element,
+                    :list_internal_load_balancer_elements,
+                    :stop_internal_load_balancer_v_m,
+                    :start_internal_load_balancer_v_m,
+                    :list_internal_load_balancer_v_ms
+    end
+
+    module PaloAlto
+      cmd_processor :list_palo_alto_firewall_networks,
+                    :list_palo_alto_firewalls,
+                    :add_palo_alto_firewall,
+                    :delete_palo_alto_firewall,
+                    :configure_palo_alto_firewall
+    end
+
   end
 end

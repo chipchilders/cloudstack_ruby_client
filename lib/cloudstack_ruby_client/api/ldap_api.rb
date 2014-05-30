@@ -1,8 +1,7 @@
 module CloudstackRubyClient
   module Api
     module Ldap
-      cmd_processor :ldap_config,
-                    :ldap_remove
+      cmd_processor :ldap_create_account
     end
   end
 end
