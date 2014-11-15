@@ -44,9 +44,15 @@ module CloudstackRubyClient
     end
 
     module NetworkACL
-      cmd_processor :create_network_acl,
-                    :delete_network_acl,
-                    :list_network_acls,
+      cmd_processor :create_network_a_c_l,
+                    :update_network_a_c_l_item,
+                    :delete_network_a_c_l,
+                    :list_network_a_c_ls,
+                    :create_network_a_c_l_list,
+                    :delete_network_a_c_l_list,
+                    :replace_network_a_c_l_list,
+                    :list_network_a_c_l_lists,
+                    :update_network_a_c_l_list,
                     :list_nicira_nvp_device_networks
     end
 
