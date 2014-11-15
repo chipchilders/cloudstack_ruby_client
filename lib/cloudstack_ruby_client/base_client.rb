@@ -1,6 +1,6 @@
 class CloudstackRubyClient::BaseClient
 
-  def initialize(api_url, api_key, secret_key, use_ssl=nil, open_timeout=5)
+  def initialize(api_url, api_key, secret_key, use_ssl=nil, open_timeout=20)
     @api_url      = api_url
     @api_key      = api_key
     @secret_key   = secret_key
