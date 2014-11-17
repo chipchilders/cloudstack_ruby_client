@@ -1,0 +1,14 @@
+PATH
+  remote: .
+  specs:
+    cloudstack_ruby_client (1.0.2)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cloudstack_ruby_client!
