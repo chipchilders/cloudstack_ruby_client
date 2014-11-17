@@ -1,10 +1,11 @@
 class CloudstackRubyClient::BaseClient
 
-  def initialize(api_url, api_key, secret_key, use_ssl=nil)
-    @api_url    = api_url
-    @api_key    = api_key
-    @secret_key = secret_key
-    @use_ssl    = use_ssl
+  def initialize(api_url, api_key, secret_key, use_ssl=nil, open_timeout=20)
+    @api_url      = api_url
+    @api_key      = api_key
+    @secret_key   = secret_key
+    @use_ssl      = use_ssl
+    @open_timeout = open_timeout
   end
 
   def request(params)
@@ -21,6 +22,7 @@ class CloudstackRubyClient::BaseClient
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = @use_ssl
+    http.open_timeout = @open_timeout  # fail the connection faster if can't open socket
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Get.new(uri.request_uri)
 

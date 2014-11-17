@@ -26,6 +26,11 @@ class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
     @@API_LIST
   end
 
+  ## CloudStack management server version
+  def version
+    self.list_capabilities["capability"]["cloudstackversion"]
+  end
+
   ## login api command
   def login(params = {})
     auth_request(params, "login")
