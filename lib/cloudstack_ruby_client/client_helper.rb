@@ -18,7 +18,6 @@ class Module
     "listsshkeypairs"            => "listSSHKeyPairs",
     "createlbstickinesspolicy"   => "createLBStickinessPolicy",
     "deletelbstickinesspolicy"   => "deleteLBStickinessPolicy",
-    "deletelbstickinesspolicy"   => "deleteLBStickinessPolicy",
     "listlbstickinesspolicies"   => "listLBStickinessPolicies",
     "listlbhealthcheckpolicies"  => "listLBHealthCheckPolicies",
     "createlbhealthcheckpolicy"  => "createLBHealthCheckPolicy",
