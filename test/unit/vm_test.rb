@@ -103,6 +103,12 @@ class VirtualMachineTest < Test::Unit::TestCase
     end
   end
 
+  def test_migrate_virtual_machine_with_volume
+    assert_raise(ArgumentError) do
+      @client.migrate_virtual_machine_with_volume
+    end
+  end
+
   def test_recover_virtual_machine
     assert_raise(ArgumentError) do
       @client.recover_virtual_machine
