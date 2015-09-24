@@ -15,6 +15,7 @@ module CloudstackRubyClient
                     :change_service_for_virtual_machine,
                     :assign_virtual_machine,
                     :migrate_virtual_machine,
+                    :migrate_virtual_machine_with_volume,
                     :recover_virtual_machine,
                     :add_nic_to_virtual_machine,
                     :remove_nic_from_virtual_machine,
