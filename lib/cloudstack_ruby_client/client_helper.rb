@@ -90,7 +90,7 @@ class Module
       } +
 
       %Q{
-          params = {'command' => command};
+          params = {:command => command};
           params.merge!(args) unless args.empty?;
 
           response = request(params);

@@ -72,8 +72,8 @@ class CloudstackRubyClient::Client < CloudstackRubyClient::BaseClient
   protected
   
   def auth_request(params, command)
-    params['response'] = 'json'
-    params['command']  = command
+    params[:response] = 'json'
+    params[:command]  = command
     data = params.map{ |k,v| "#{k.to_s}=#{CGI.escape(v.to_s).gsub(/\+|\ /, "%20")}" }.sort.join('&')
     
     url = "#{@api_url}?#{data}"
