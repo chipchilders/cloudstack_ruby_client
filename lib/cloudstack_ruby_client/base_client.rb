@@ -17,7 +17,7 @@ class CloudstackRubyClient::BaseClient
     signature = Base64.encode64(signature).chomp
     
     method = 'POST' if params[:userdata] and params[:userdata].size > 2048
-    if method == "POST"
+    if method == 'POST'
       params[:signature] = signature
       url = @api_url
     else
