@@ -23,14 +23,18 @@ class Module
     "createlbhealthcheckpolicy"  => "createLBHealthCheckPolicy",
     "deletelbhealthcheckpolicy"  => "deleteLBHealthCheckPolicy",
     "createvpc"                  => "createVPC",
-    "listvpcs"          	 => "listVPCs",
-    "deletevpc"          	 => "deleteVPC",
+    "listvpcs"                   => "listVPCs",
+    "deletevpc"                  => "deleteVPC",
     "updatevpc"                  => "updateVPC",
     "restartvpc"                 => "restartVPC",
     "createvpcoffering"          => "createVPCOffering",
     "updatevpcoffering"          => "updateVPCOffering",
     "deletevpcoffering"          => "deleteVPCOffering",
-    "listvpcofferings"           => "listVPCOfferings"
+    "listvpcofferings"           => "listVPCOfferings",
+    "listvmsnapshot"             => "listVMSnapshot",
+    "createvmsnapshot"           => "createVMSnapshot",
+    "deletevmsnapshot"           => "deleteVMSnapshot",
+    "reverttovmsnapshot"         => "revertToVMSnapshot"
   }
 
   #
