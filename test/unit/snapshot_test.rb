@@ -20,7 +20,7 @@ class SnapshotTest < Test::Unit::TestCase
   def teardown
     # Do nothing here!
   end
-  
+
   ### Snapshot ###
   def test_create_snapshot
     assert_raise(ArgumentError) do
@@ -47,6 +47,30 @@ class SnapshotTest < Test::Unit::TestCase
   def test_list_snapshot_policies
     assert_raise(ArgumentError) do
       @client.list_snapshot_policies
+    end
+  end
+
+  def test_list_vm_snapshot
+    assert_raise(ArgumentError) do
+      @client.list_vm_snapshot
+    end
+  end
+
+  def test_create_vm_snapshot
+    assert_raise(ArgumentError) do
+      @client.create_vm_snapshot
+    end
+  end
+
+  def test_delete_vm_snapshot
+    assert_raise(ArgumentError) do
+      @client.delete_vm_snapshot
+    end
+  end
+
+  def test_revert_to_vm_snapshot
+    assert_raise(ArgumentError) do
+      @client.revert_to_vm_snapshot
     end
   end
 end
