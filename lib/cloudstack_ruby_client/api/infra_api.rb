@@ -42,7 +42,8 @@ module CloudstackRubyClient
                     :add_secondary_storage,
                     :prepare_host_for_maintenance,
                     :cancel_host_maintenance,
-                    :update_host_password
+                    :update_host_password,
+                    :find_hosts_for_migration
     end
   end
 end
